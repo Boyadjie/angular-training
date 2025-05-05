@@ -372,4 +372,52 @@ Notes :
 
 
 
+## Routing - RouterLinkActive 1/2
+
+- Use `routerLinkActive` input to specify one or more CSS classes to be added when the linked route is active
+
+```ts
+@Component ({
+  selector: 'app-nav',
+  template: `
+    <a routerLink="/" routerLinkActive="link-active"> Home </a>
+
+    <a routerLink="/contacts" routerLinkActive="link-active"> Contact list </a>
+
+    <a routerLink="/contacts/1" routerLinkActive="link-active"> Contact 1 </a>
+  `,
+  styles: `.link-active { color: blue }`,
+})
+export class NavComponent {}
+```
+
+Notes :
+
+
+
+## Routing - RouterLinkActive 2/2
+
+- Use `routerLinkActiveOptions` input to add the classes only when the URL matches the link exactly
+
+```ts
+@Component ({
+  selector: 'app-nav',
+  template: `
+    <a
+      routerLink="/"
+      [routerLinkActive]="['link-active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Home
+    </a>
+  `,
+  styles: `.link-active { color: blue }`,
+})
+export class NavComponent {}
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
