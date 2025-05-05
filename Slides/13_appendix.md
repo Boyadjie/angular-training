@@ -420,4 +420,61 @@ Notes :
 
 
 
+## Pipes - Custom 1/2
+
+- Can be generated using Angular CLI: `ng generate pipe <pipeName>`
+- Use the `@Pipe` decorator on a class
+- Class must implement the `PipeTransform` interface (i.e. the `transform` method)
+
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'joinArray' })
+export class JoinArrayPipe implements PipeTransform {
+  transform(value: (string | number)[], separator = ' '): string {
+    return value.join(separator);
+  }
+}
+```
+
+- Usage example:
+
+```html
+<p>List: {{ ['apple', 'orange', 'banana'] | joinArray : ' / ' }}</p>
+
+<!-- List: apple / orange / banana -->
+```
+
+Notes :
+In fact this pipe does not really work because it needs to be "impure" (this is explained later...).
+
+
+## Pipes - Custom 2/2
+
+  - JoinArrayPipe should be defined as `impure` because its input is an `Array` that may be mutated
+
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'joinArray', pure: false }) // <-- Should be impure!
+export class JoinArrayPipe implements PipeTransform {
+  transform(value: (string | number)[], separator = ' '): string {
+    return value.join(separator);
+  }
+}
+
+@Component({
+  selector: 'app-root',
+  template: `{{ appList | joinArray }}
+    <button (click)=" appList.push('kiwi') ">Mutate</button>`, // <-- Mutation
+})
+export class AppComponent {
+  appList = ['apple', 'orange', 'banana'];
+}
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
