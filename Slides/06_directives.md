@@ -57,35 +57,6 @@ Notes :
 
 
 
-## Built-in attr. directives - NgStyle
-
-- The `ngStyle` directive adds CSS styles
-- Takes an object with CSS properties as keys
-
-```ts
-import { Component } from '@angular/core';
-import { NgStyle } from '@angular/common';
-
-@Component ({
-  selector: 'app-font-size-selector',
-  imports: [NgStyle],
-  template: `
-    <h1 [ngStyle]="{ 'font-size': currentSize + 'px' }">Example<h1>
-    Change size: <input type="number" [value]="currentSize" (input)="changeSize($event)">
-  `
-})
-export class FontSizeSelectorComponent {
-  currentSize = 20;
-  changeSize(event: Event) {
-    this.currentSize = Number((event.target as HTMLInputElement).value);
-  }
-}
-```
-
-Notes :
-
-
-
 ## Built-in attr. directives - NgClass 1/2
 
 - The `ngClass` directive adds CSS classes conditionally
