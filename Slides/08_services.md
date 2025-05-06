@@ -171,7 +171,15 @@ Notes :
 
 
 
-## Services - Injectors hierarchy
+## Services - Injectors hierarchy 1/2
+
+<img src="./resources/08-injectors-img.png" width="60%" style="display: block; margin: 4rem auto 0 auto" />
+
+Notes :
+
+
+
+## Services - Injectors hierarchy 2/2
 
 - During a dependency injection
   - the local injector tries to **find a compatible provider**
@@ -183,11 +191,9 @@ Notes :
   In a typical Angular application, **most services are provided globally** at the application configuration level
 </div>
 
-
 - However, it is sometimes useful to **delegate part of a component's logic to a dedicated service**, which is then **provided at the component level itself**
 
 Notes :
-
 
 
 
