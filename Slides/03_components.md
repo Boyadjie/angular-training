@@ -510,6 +510,27 @@ Notes :
 
 
 
+## Component - ngOnInit
+
+- `ngOnInit` is a lifecycle hook
+- It's called after Angular has initialized all data-bound properties of a directive
+- Define an `ngOnInit()` method to handle any additional initialization tasks
+- Add `implements OnInit` to make the component implements the interface `OnInit`
+- Angular provides several lifecycle hooks. In this training, we will only focus on `ngOnInit()`
+
+```ts
+export class CounterComponent implements OnInit {      // <-- Implement the `OnInit` interface
+
+  ngOnInit() {
+    // Initialization
+  }
+}
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
 
 
