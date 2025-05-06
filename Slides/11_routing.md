@@ -387,7 +387,8 @@ export const contactGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) =
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: 'contacts/:id', component: ContactComponent, canMatch: [contactGuard] }
+  { path: 'contacts/:id', component: ContactComponent, canMatch: [contactGuard] },
+  { path: 'contacts/:id', component: OtherComponent }
 ];
 ```
 
