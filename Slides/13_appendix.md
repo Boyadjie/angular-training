@@ -505,4 +505,185 @@ Notes :
 
 
 
+## Attribute directive - Custom
+
+- To create a custom directive, add the `@Directive` decorator on a class
+- `ElementRef` gives you access to the host element
+- `Renderer2` let you change the appearance or behavior of the host element
+
+```ts
+import { Directive, ElementRef, Renderer2, inject } from '@angular/core';
+
+@Directive({ selector: '[appHighlight]' })
+export class HighlightDirective {
+  constructor() {
+    const elementRef = inject(ElementRef);
+    const renderer = inject(Renderer2);
+
+    renderer.listen(elementRef.nativeElement, 'mouseenter', () => {
+      renderer.setStyle(elementRef.nativeElement, 'backgroundColor', 'yellow');
+    });
+    renderer.listen(elementRef.nativeElement, 'mouseleave', () => {
+      renderer.setStyle(elementRef.nativeElement, 'backgroundColor', null);
+    });
+  }
+}
+```
+
+Notes :
+
+- Specify that we use the native API mainly to allow server-side rendering
+
+
+
+## Attribute directive - Usage
+
+- Import the directive `class` in your component
+- Use the directive `selector` to attach it to DOM elements in the component template
+
+```ts
+import { Component } from '@angular/core';
+import { HighlightDirective } from './highlight.directive.ts';
+
+@Component({
+  selector: 'app-root',
+  imports: [HighlightDirective],
+  template: `<p appHighlight> Highlight me! </p>`,
+})
+export class AppComponent {}
+```
+
+- At runtime, if we open the Chrome inspector, we can verify that the style has been correctly applied to the paragraph
+
+```html
+<p style="background-color: yellow"> Highlight me! </p>
+```
+
+Notes :
+
+
+
+## Attribute directive - Host element
+
+- When possible, instead of the `Renderer2`, use the `host` metadata to configure *host binding* and *host listener*
+
+```ts
+import { Directive } from '@angular/core';
+
+@Directive ({
+  selector: '[appHighlight]',
+  host: {
+    '[style.backgroundColor]': 'currentColor',
+    '(mouseenter)': 'onMouseEnter()',
+    '(mouseleave)': 'onMouseLeave()',
+  }
+})
+export class HighlightDirective {
+  currentColor?: string;
+
+  onMouseEnter() { this.currentColor = 'yellow'; }
+
+  onMouseLeave() { this.currentColor = undefined; }
+}
+```
+
+- Note that `host` property also applies to component metadata
+
+Notes :
+
+
+
+## Attribute directive - Input and Output 1/2
+
+- Use `input` and `output` functions to make the directive configurable
+
+```ts
+import { Directive, input, output } from '@angular/core';
+
+@Directive ({
+  selector: '[appHighlight]',
+  host: { /* ...same bindings as previous slide... */ }
+})
+export class HighlightDirective {
+  currentColor?: string;
+  highlightColor = input('yellow', { alias: 'appHighlight' });
+  highlighted = output<boolean>();
+
+  onMouseEnter() {
+    this.currentColor = this.highlightColor();
+    this.highlighted.emit(true);
+  }
+  onMouseLeave() {
+    this.currentColor = undefined;
+    this.highlighted.emit(false);
+  }
+}
+```
+
+Notes :
+
+
+
+## Attribute directive - Input and Output 2/2
+
+- Use regular property binding and event binding on the host element
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <p
+      [appHighlight]="highlightColor"
+      (highlighted)="highlightedHandler($event)"
+    >
+      Highlight me!
+    </p>
+  `,
+})
+export class AppComponent {
+  highlightColor = 'green';
+
+  highlightedHandler(highlighted: boolean) {
+    console.log('Is highlighted?', highlighted);
+  }
+}
+```
+
+Notes :
+
+
+
+## Directives - Testing
+
+- Create a wrapper component for DOM testing purposes
+
+```ts
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HighlightDirective } from './highlight.directive';
+
+@Component({
+  selector: 'app-wrapper',
+  imports: [HighlightDirective],
+  template: '<div appHighlight>Highlight</div>',
+})
+class WrapperComponent {}
+
+describe('HighlightDirective', () => {
+  let fixture: ComponentFixture<WrapperComponent>;
+  let hostElement: HTMLElement;
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({ imports: [WrapperComponent] }).compileComponents();
+    fixture = TestBed.createComponent(WrapperComponent);
+    hostElement = fixture.nativeElement.querySelector('[appHighlight]') as HTMLElement;
+  });
+});
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
