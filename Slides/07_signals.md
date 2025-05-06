@@ -128,7 +128,7 @@ Notes :
 
 
 
-## Signals - Synchronization process 1/2
+## Signals - Synchronization process 1/3
 
 - The goal of synchronization is to keep the **UI** in sync with the **state** of the application
 
@@ -150,7 +150,15 @@ Notes :
 
 
 
-## Signals - Synchronization process 2/2
+## Signals - Synchronization process 2/3
+
+<img src="./resources/07-detection-default-img.png" width="80%" style="display: block; margin: 4rem auto 0 auto" />
+
+Notes :
+
+
+
+## Signals - Synchronization process 3/3
 
 😉 *A deeper understanding of the synchronization process goes beyond the scope of this training*
 
