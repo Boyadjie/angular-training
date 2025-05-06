@@ -477,4 +477,32 @@ Notes :
 
 
 
+## Signals - Zoneless
+
+- Enabling Zoneless in your application is still an experimental feature
+
+```ts
+import {
+  ApplicationConfig,
+  // provideZoneChangeDetection,
+  provideExperimentalZonelessChangeDetection,
+} from '@angular/core';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // provideZoneChangeDetection({ eventCoalescing: true }),   // <-- Default
+
+    provideExperimentalZonelessChangeDetection(),               // <-- Zoneless
+  ],
+};
+```
+
+- You also need to remove `"zone.js"` and `"zone.js/testing"` in your angular.json configuration file
+
+- Then you can safely uninstall Zone.js by running the command `npm uninstall zone.js`
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->

@@ -128,7 +128,7 @@ Notes :
 
 
 
-## Signals - Synchronization process 1/3
+## Signals - Synchronization process 1/2
 
 - The goal of synchronization is to keep the **UI** in sync with the **state** of the application
 
@@ -150,35 +150,7 @@ Notes :
 
 
 
-## Signals - Synchronization process 2/3
-
-- Enabling Zoneless in your application is still an experimental feature
-
-```ts
-import {
-  ApplicationConfig,
-  // provideZoneChangeDetection,
-  provideExperimentalZonelessChangeDetection,
-} from '@angular/core';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    // provideZoneChangeDetection({ eventCoalescing: true }),   // <-- Default
-
-    provideExperimentalZonelessChangeDetection(),               // <-- Zoneless
-  ],
-};
-```
-
-- You also need to remove `"zone.js"` and `"zone.js/testing"` in your angular.json configuration file
-
-- Then you can safely uninstall Zone.js by running the command `npm uninstall zone.js`
-
-Notes :
-
-
-
-## Signals - Synchronization process 3/3
+## Signals - Synchronization process 2/2
 
 😉 *A deeper understanding of the synchronization process goes beyond the scope of this training*
 
