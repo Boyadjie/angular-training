@@ -8,14 +8,12 @@
 
 <div class="mb-3 d-flex flex-row align-items-center justify-content-between">
   <h2 class="mb-0 me-3 h4">Catalogue</h2>
-
-  <app-select-product-key class="text-end" [(productKey)]="productKey" />
 </div>
 
 @if (products()) {
   @if (hasProductsInStock()) {
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-      @for (product of products() | sortProducts: productKey(); track product.id) {
+      @for (product of products(); track product.id) {
         @if (product.stock) {
           <app-product class="col" [product]="product" (addToBasket)="addToBasket($event)" />
         }
