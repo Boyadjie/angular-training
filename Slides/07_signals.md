@@ -152,7 +152,9 @@ Notes :
 
 ## Signals - Synchronization process 2/4
 
-<img src="./resources/07-detection-default-img.png" width="80%" style="display: block; margin: 4rem auto 0 auto" />
+  - Default : Because Angular has no information about which parts have actually changed, it must check every component
+
+<img src="./resources/07-detection-default-img.png" width="70%" style="display: block; margin: 4rem auto 0 auto" />
 
 Notes :
 
@@ -160,7 +162,9 @@ Notes :
 
 ## Signals - Synchronization process 3/4
 
-<img src="./resources/07-detection-signals-img.png" width="80%" style="display: block; margin: 4rem auto 0 auto" />
+  - Zoneless : With Signals, Angular could target only omponents that have changed. Moreover, ZoneJS is no longer needed
+
+<img src="./resources/07-detection-signals-img.png" width="70%" style="display: block; margin: 4rem auto 0 auto" />
 
 Notes :
 
