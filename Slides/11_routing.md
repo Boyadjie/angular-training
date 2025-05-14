@@ -373,9 +373,9 @@ import { inject } from '@angular/core';
 import { CanMatchFn, Route, UrlSegment } from '@angular/router';
 import { ContactService } from './contact.service';
 
-export const isAllowedGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
+export const contactGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
 
-  const id = snapshot.params['id']; // <-- Remember that the route path was: 'contacts/:id'
+  const id = segments.at(1)?.path; // <-- Remember that the route path was: 'contacts/:id'
 
   return inject(ContactService).isAllowed(Number(id));
 };
@@ -387,8 +387,9 @@ export const isAllowedGuard: CanMatchFn = (route: Route, segments: UrlSegment[])
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: 'contacts/:id', component: AllowedHomeComponent, canMatch: [isAllowedGuard] },
-  { path: 'contacts/:id', component: HomeComponent }
+  { path: 'contacts/:id', component: ContactComponent, canMatch: [contactGuard] },
+  { path: 'contacts/:id', component: NoContactComponent },  // <-- Use a fallback component...
+  { path: '**', component: PageNotFoundComponent },    // <-- ... Or even "PageNotFoundComponent"
 ];
 ```
 
