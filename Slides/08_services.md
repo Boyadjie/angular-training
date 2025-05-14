@@ -171,15 +171,58 @@ Notes :
 
 
 
-## Services - Injectors hierarchy 1/2
+## Services - providedIn VS providers 1/3
+Use **cautiously** the `providers` metadata!
+Here's an example: we created a service (**MyService**) and two components: **ParentComponent** and **ChildComponent**
+- **MyService** is `providedIn: 'root'`
+- **ParentComponent** has a dedicated provider for **MyService** (`providers: [MyService]`)
+- **ChildComponent** is a child of **ParentComponent**
 
-<img src="./resources/08-injectors-img.png" width="60%" style="display: block; margin: 4rem auto 0 auto" />
+```ts
+@Injectable({
+  providedIn: 'root'
+})
+export class MyService {}
+
+@Component ({
+  providers: [MyService],
+  imports: [ChildComponent],
+})
+export class ParentComponent {
+  myService = inject(MyService);
+}
+```
 
 Notes :
 
 
 
-## Services - Injectors hierarchy 2/2
+## Services - providedIn VS providers 2/3
+
+**Questions**:
+- How many instances of MyService will we have at runtime?
+- Which components will share the same instance of MyService?
+
+<img src="./resources/08-injectors-part1-img.png" width="40%" style="display: block; margin: 4rem auto 2rem auto" />
+
+Notes :
+
+
+
+## Services - providedIn VS providers 3/3
+
+We will have 2 instances of MyService at runtime.
+- AppComponent doesn't have any providers: it uses the root's instance of MyService (those who was `providedIn: Root`)
+- ParentComponent has its own provider: it uses its own instance of MyService
+- ChildComponent doesn't have any provider, but its parent does: both of them share the same instance of MyService
+
+<img src="./resources/08-injectors-part2-img.png" width="45%" style="display: block; margin: 1rem auto 1rem auto" />
+
+Notes :
+
+
+
+## Services - Injectors hierarchy
 
 - During a dependency injection
   - the local injector tries to **find a compatible provider**
