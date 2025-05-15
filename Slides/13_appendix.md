@@ -27,6 +27,17 @@ Notes :
 
 
 
+## Angular coding style guide
+Angular provides a `coding style guide` that recaps the best practices in the Angular ecosystem.
+
+**Follow its advices to improve your skills !**
+
+https://angular.dev/style-guide
+
+Notes :
+
+
+
 ## Appendix - Component view encapsulation 1/3
 
 - By default, **component's styles are encapsulated** within the component's host element so that they **don't affect the rest of the application**
@@ -74,7 +85,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {}
 ```
-
 
 - At runtime, Angular transforms the pseudo class into **unique attributes**
 
