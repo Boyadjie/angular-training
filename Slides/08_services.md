@@ -212,8 +212,8 @@ Notes :
 ## Services - providedIn VS providers 3/3
 
 We will have 2 instances of MyService at runtime.
-- AppComponent doesn't have any providers: it uses the root's instance of MyService (those who was `providedIn: Root`)
-- ParentComponent has its own provider: it uses its own instance of MyService
+- AppComponent doesn't have any providers: it uses the MyService instance defined in the root injector
+- Parent component find MyService in it's own injector : therefore it uses another instance
 - ChildComponent doesn't have any provider, but its parent does: both of them share the same instance of MyService
 
 <img src="./resources/08-injectors-part2-img.png" width="50%" style="display: block; margin: 1rem auto 1rem auto" />
