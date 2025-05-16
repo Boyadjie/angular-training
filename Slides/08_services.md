@@ -212,10 +212,9 @@ Notes :
 ## Services - providedIn VS providers 3/3
 
 We will have 2 instances of MyService at runtime.
-- AppComponent doesn't have any providers: it uses the MyService instance defined in the root injector
-- Parent component find MyService in it's own injector : therefore it uses another instance
-- ChildComponent doesn't have any provider, but its parent does: both of them share the same instance of MyService
-
+- AppComponent uses the MyService's instance **defined in the root injector**
+- ParentComponent find MyService in its own injector: therefore **it uses another instance**
+- ChildComponent doesn't have MyService in its own injector. Angular will look for an instance that is further up in the component tree: therefore **it will use the ParentComponent's instance**
 <img src="./resources/08-injectors-part2-img.png" width="50%" style="display: block; margin: 1rem auto 1rem auto" />
 
 Notes :
