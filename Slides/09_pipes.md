@@ -77,36 +77,6 @@ Notes :
 
 
 
-## Pipes - Custom
-
-- Can be generated using Angular CLI: `ng generate pipe <pipeName>`
-- Use the `@Pipe` decorator on a class
-- Class must implement the `PipeTransform` interface (i.e. the `transform` method)
-
-```ts
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({ name: 'joinArray' })
-export class JoinArrayPipe implements PipeTransform {
-  transform(value: (string | number)[], separator = ' '): string {
-    return value.join(separator);
-  }
-}
-```
-
-- Usage example:
-
-```html
-<p>List: {{ ['apple', 'orange', 'banana'] | joinArray : ' / ' }}</p>
-
-<!-- List: apple / orange / banana -->
-```
-
-Notes :
-In fact this pipe does not really work because it needs to be "impure" (this is explained later...).
-
-
-
 ## Pipes - Configuration
 
 Some Angular pipes can be configured globally
@@ -178,28 +148,14 @@ Notes :
 
 ## Pipes - Pure
 
-- Transformation function can be marked as "pure" if it has the following properties:
-  - the function return values are identical for identical arguments
-  - the function has no side effects
-- When Angular re-evaluate a template, it will only re-evaluate the pipe if its input value **reference** has changed
 - Pipes are pure by default
-
-```ts
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({ name: 'fancy' /*, pure: true */ })
-export class FancyPipe implements PipeTransform {
-  transform(value: string): string {
-    return `Fancy ${value}`;
-  }
-}
-```
+- When Angular re-evaluate a template, it will only re-evaluate the pipe if its input value **reference** has changed
 
 Notes :
 
 
 
-## Pipes - Impure 1/2
+## Pipes - Impure
 
 - Angular always re-evaluate "impure" pipe, even if its input value **reference** has not changed
   - Should be used for input value such as `Array` or `Object` that may be mutated over time
@@ -220,35 +176,6 @@ import { JsonPipe } from '@angular/common';
 })
 export class AppComponent {
   data = { msg: 'Hello' };
-}
-```
-
-Notes :
-
-
-
-## Pipes - Impure 2/2
-
-- Let's look again at the custom pipe used as an example earlier
-  - It should be defined as `impure` because its input is an `Array` that may be mutated
-
-```ts
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({ name: 'joinArray', pure: false }) // <-- Should be impure!
-export class JoinArrayPipe implements PipeTransform {
-  transform(value: (string | number)[], separator = ' '): string {
-    return value.join(separator);
-  }
-}
-
-@Component({
-  selector: 'app-root',
-  template: `{{ appList | joinArray }}
-    <button (click)=" appList.push('kiwi') ">Mutate</button>`, // <-- Mutation
-})
-export class AppComponent {
-  appList = ['apple', 'orange', 'banana'];
 }
 ```
 

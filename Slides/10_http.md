@@ -339,8 +339,7 @@ this.httpClient
   .get<Todo>(TODO_1_URL)    // <-- { id: 1, title: "delectus aut autem", completed: false }
 
   .pipe(
-    map((todo) => ({ title: todo.title })),           // <-- { title: "delectus aut autem" }
-    map((todo: Pick<Todo, 'title'>) => todo.title)),  // <-- "delectus aut autem"
+    map((todo) => todo.title),           // <-- "delectus aut autem"
   )
 
   .subscribe((title: string) => {

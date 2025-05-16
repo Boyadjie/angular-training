@@ -106,7 +106,7 @@ Notes :
 
 
 
-## Routing - RouterLink 1/3
+## Routing - RouterLink
 
 - Navigate between views using the `routerLink` directive
 
@@ -126,54 +126,6 @@ Notes :
 export class NavComponent {
   id = 2;
 }
-```
-
-Notes :
-
-
-
-## Routing - RouterLink 2/3
-
-- Use `routerLinkActive` input to specify one or more CSS classes to be added when the linked route is active
-
-```ts
-@Component ({
-  selector: 'app-nav',
-  template: `
-    <a routerLink="/" routerLinkActive="link-active"> Home </a>
-
-    <a routerLink="/contacts" routerLinkActive="link-active"> Contact list </a>
-
-    <a routerLink="/contacts/1" routerLinkActive="link-active"> Contact 1 </a>
-  `,
-  styles: `.link-active { color: blue }`,
-})
-export class NavComponent {}
-```
-
-Notes :
-
-
-
-## Routing - RouterLink 3/3
-
-- Use `routerLinkActiveOptions` input to add the classes only when the URL matches the link exactly
-
-```ts
-@Component ({
-  selector: 'app-nav',
-  template: `
-    <a
-      routerLink="/"
-      [routerLinkActive]="['link-active']"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      Home
-    </a>
-  `,
-  styles: `.link-active { color: blue }`,
-})
-export class NavComponent {}
 ```
 
 Notes :
@@ -375,7 +327,7 @@ Notes :
   - `canMatch`
   - `resolve`
 
-*In this training, we wil focus on `canActivate` and `canMatch` guards*
+*In this training, we will focus on `canActivate` and `canMatch` guards*
 
 Notes :
 
@@ -435,7 +387,9 @@ export const contactGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) =
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: 'contacts/:id', component: ContactComponent, canMatch: [contactGuard] }
+  { path: 'contacts/:id', component: ContactComponent, canMatch: [contactGuard] },
+  { path: 'contacts/:id', component: NoContactComponent },  // <-- Use a fallback component...
+  { path: '**', component: PageNotFoundComponent },    // <-- ... Or even "PageNotFoundComponent"
 ];
 ```
 

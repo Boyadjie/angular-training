@@ -171,6 +171,56 @@ Notes :
 
 
 
+## Services - providedIn VS providers 1/3
+Use **cautiously** the `providers` metadata!
+Here's an example: we created a service (**MyService**) and two components: **ParentComponent** and **ChildComponent**
+- **MyService** is `providedIn: 'root'`
+- **ParentComponent** has a dedicated provider for **MyService** (`providers: [MyService]`)
+- **ChildComponent** is a child of **ParentComponent**
+
+```ts
+@Injectable({
+  providedIn: 'root'
+})
+export class MyService {}
+
+@Component ({
+  providers: [MyService],
+  imports: [ChildComponent],
+})
+export class ParentComponent {
+  myService = inject(MyService);
+}
+```
+
+Notes :
+
+
+
+## Services - providedIn VS providers 2/3
+
+**Questions**:
+- How many instances of MyService will we have at runtime?
+- Which components will share the same instance of MyService?
+
+<img src="./resources/08-injectors-part1-img.png" width="50%" style="display: block; margin: 2rem auto 2rem auto" />
+
+Notes :
+
+
+
+## Services - providedIn VS providers 3/3
+
+We will have 2 instances of MyService at runtime.
+- AppComponent uses the MyService's instance **defined in the root injector**
+- ParentComponent find MyService in its own injector: therefore **it uses another instance**
+- ChildComponent doesn't have MyService in its own injector. Angular will look for an instance that is further up in the component tree: therefore **it will use the ParentComponent's instance**
+<img src="./resources/08-injectors-part2-img.png" width="50%" style="display: block; margin: 1rem auto 1rem auto" />
+
+Notes :
+
+
+
 ## Services - Injectors hierarchy
 
 - During a dependency injection
@@ -183,11 +233,9 @@ Notes :
   In a typical Angular application, **most services are provided globally** at the application configuration level
 </div>
 
-
 - However, it is sometimes useful to **delegate part of a component's logic to a dedicated service**, which is then **provided at the component level itself**
 
 Notes :
-
 
 
 

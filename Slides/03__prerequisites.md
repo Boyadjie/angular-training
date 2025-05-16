@@ -275,7 +275,6 @@ const logOfNumber = new Log<number>();
 logOfNumber.log(5);
 logOfNumber.log(6);
 
-
 const logOfString = new Log<string>();
 logOfString.log('Hello');
 logOfString.log('world!');

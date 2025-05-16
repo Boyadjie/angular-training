@@ -128,57 +128,44 @@ Notes :
 
 
 
-## Signals - Synchronization process 1/3
+## Signals - Synchronization process
 
 - The goal of synchronization is to keep the **UI** in sync with the **state** of the application
+- This is a very complex process: for a better understanding, let's take an example!
 
-- This is a very complex process, formerly called **Change detection** and still based today on a third-party library called **Zone.js**
-
-- In other words, for now, Zone.js is responsible for telling Angular when to trigger its change detection process and update the UI to reflect the state of the application
-
-- Understanding Zone.js goes beyond the scope of this training
-
-- However, Angular is moving towards **Zoneless** applications
-
-- In this new era, **signals** will play a crucial role in enabling Angular to know exactly when and which parts of the UI needs to be synchronized
-
-As a rule of thumb
-  - if the part of the **state to be rendered in your templates** only **changes through signals**
-  - then your app should be **ready to go Zoneless**
+Here's a common component tree: component 2 has a button. When a user clicks on the button:
+- Who notifies Angular that it must perform a synchronization to reflect the changes?
+- How Angular knows the components it has to re-render?
+<img src="./resources/07-tree-img.png" width="45%" style="display: block; margin: 2rem auto 2rem auto" />
 
 Notes :
 
 
 
-## Signals - Synchronization process 2/3
+## Signals - Synchronization (default)
 
-- Enabling Zoneless in your application is still an experimental feature
-
-```ts
-import {
-  ApplicationConfig,
-  // provideZoneChangeDetection,
-  provideExperimentalZonelessChangeDetection,
-} from '@angular/core';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    // provideZoneChangeDetection({ eventCoalescing: true }),   // <-- Default
-
-    provideExperimentalZonelessChangeDetection(),               // <-- Zoneless
-  ],
-};
-```
-
-- You also need to remove `"zone.js"` and `"zone.js/testing"` in your angular.json configuration file
-
-- Then you can safely uninstall Zone.js by running the command `npm uninstall zone.js`
+Without Signals:
+- **Zone.js** (a third-party library) notifies Angular when to trigger the synchronization
+- Because Zone.js doesn't provide any information about which parts have actually changed, Angular must check every component
+<img src="./resources/07-detection-default-img.png" width="65%" style="display: block; margin: 2rem auto 2rem auto" />
 
 Notes :
 
 
 
-## Signals - Synchronization process 3/3
+## Signals - Synchronization process (Signals)
+
+With Zoneless component (only Signals, no ZoneJs):
+- The Signal itself notifies Angular when to trigger the synchronization
+- With Signals, Angular knows exactly which components have changed: Angular synchronizes only the components that need to be re-render (we don't need **Zone.js** anymore!)
+
+<img src="./resources/07-detection-signals-img.png" width="65%" style="display: block; margin: 2rem auto 2rem auto" />
+
+Notes :
+
+
+
+## Signals - Synchronization process (resources)
 
 😉 *A deeper understanding of the synchronization process goes beyond the scope of this training*
 
