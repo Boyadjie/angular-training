@@ -203,7 +203,7 @@ Notes :
 - How many instances of MyService will we have at runtime?
 - Which components will share the same instance of MyService?
 
-<img src="./resources/08-injectors-part1-img.png" width="40%" style="display: block; margin: 4rem auto 2rem auto" />
+<img src="./resources/08-injectors-part1-img.png" width="50%" style="display: block; margin: 2rem auto 2rem auto" />
 
 Notes :
 
@@ -216,7 +216,7 @@ We will have 2 instances of MyService at runtime.
 - ParentComponent has its own provider: it uses its own instance of MyService
 - ChildComponent doesn't have any provider, but its parent does: both of them share the same instance of MyService
 
-<img src="./resources/08-injectors-part2-img.png" width="45%" style="display: block; margin: 1rem auto 1rem auto" />
+<img src="./resources/08-injectors-part2-img.png" width="50%" style="display: block; margin: 1rem auto 1rem auto" />
 
 Notes :
 
