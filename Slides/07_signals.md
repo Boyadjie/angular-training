@@ -155,7 +155,7 @@ Notes :
 
 ## Signals - Synchronization process (Signals)
 
-With Signals (aka **Zoneless component**):
+With Zoneless component (only Signals, no ZoneJs):
 - The Signal itself notifies Angular when to trigger the synchronization
 - With Signals, Angular knows exactly which components have changed: Angular synchronizes only the components that need to be re-render (we don't need **Zone.js** anymore!)
 
