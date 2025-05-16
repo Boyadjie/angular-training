@@ -6,14 +6,11 @@ import { CatalogService } from './catalog/catalog.service';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 import { Product } from './product/product.types';
-import { SelectProductKeyComponent } from './select-product-key/select-product-key.component';
-import { SelectProductKey } from './select-product-key/select-product-key.types';
-import { SortProductsPipe } from './sort-products/sort-products.pipe';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [CurrencyPipe, MenuComponent, ProductComponent, SelectProductKeyComponent, SortProductsPipe],
+  imports: [CurrencyPipe, MenuComponent, ProductComponent],
 })
 export class AppComponent {
   private catalogService = inject(CatalogService);
@@ -27,8 +24,6 @@ export class AppComponent {
   hasProductsInStock = this.catalogService.hasProductsInStock;
 
   total = this.basketService.total;
-
-  productKey = signal<SelectProductKey>(undefined);
 
   addToBasket({ id, title, price }: Product) {
     this.basketService.addItem({ id, title, price });

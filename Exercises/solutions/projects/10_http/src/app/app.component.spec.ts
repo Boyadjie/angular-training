@@ -61,38 +61,6 @@ describe('AppComponent', () => {
     });
   });
 
-  it('should display the products sorted by price', () => {
-    component.productKey.set('price');
-    fixture.detectChanges();
-
-    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product'));
-
-    const expectedComponentProducts = component
-      .products()
-      .filter(({ stock }) => stock > 0)
-      .sort((p1, p2) => (p1.price > p2.price ? 1 : p1.price < p2.price ? -1 : 0));
-
-    productDebugElements.forEach((productDebugElement, index) => {
-      expect(productDebugElement.properties['product']).toBe(expectedComponentProducts[index]);
-    });
-  });
-
-  it('should display the products sorted by stock', () => {
-    component.productKey.set('stock');
-    fixture.detectChanges();
-
-    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product'));
-
-    const expectedComponentProducts = component
-      .products()
-      .filter(({ stock }) => stock > 0)
-      .sort((p1, p2) => (p1.stock > p2.stock ? 1 : p1.stock < p2.stock ? -1 : 0));
-
-    productDebugElements.forEach((productDebugElement, index) => {
-      expect(productDebugElement.properties['product']).toBe(expectedComponentProducts[index]);
-    });
-  });
-
   it('should call "BasketService.addItem" and "CatalogService.decreaseStock" methods when a product is added to the basket', () => {
     const addItemSpy = spyOn(TestBed.inject(BasketService), 'addItem').and.returnValue(
       of({ id: 't-shirt', title: 't-shirt', price: 10 }),
