@@ -30,7 +30,7 @@ Notes :
 ## Angular coding style guide
 Angular provides a `coding style guide` that recaps the best practices in the Angular ecosystem.
 
-**Follow its advices to improve your skills !**
+**Follow its advices to improve your skills!**
 
 https://angular.dev/style-guide
 
@@ -430,63 +430,6 @@ Notes :
 
 
 
-## Pipes - Custom 1/2
-
-- Can be generated using Angular CLI: `ng generate pipe <pipeName>`
-- Use the `@Pipe` decorator on a class
-- Class must implement the `PipeTransform` interface (i.e. the `transform` method)
-
-```ts
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({ name: 'joinArray' })
-export class JoinArrayPipe implements PipeTransform {
-  transform(value: (string | number)[], separator = ' '): string {
-    return value.join(separator);
-  }
-}
-```
-
-- Usage example:
-
-```html
-<p>List: {{ ['apple', 'orange', 'banana'] | joinArray : ' / ' }}</p>
-
-<!-- List: apple / orange / banana -->
-```
-
-Notes :
-In fact this pipe does not really work because it needs to be "impure" (this is explained later...).
-
-
-## Pipes - Custom 2/2
-
-  - JoinArrayPipe should be defined as `impure` because its input is an `Array` that may be mutated
-
-```ts
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({ name: 'joinArray', pure: false }) // <-- Should be impure!
-export class JoinArrayPipe implements PipeTransform {
-  transform(value: (string | number)[], separator = ' '): string {
-    return value.join(separator);
-  }
-}
-
-@Component({
-  selector: 'app-root',
-  template: `{{ appList | joinArray }}
-    <button (click)=" appList.push('kiwi') ">Mutate</button>`, // <-- Mutation
-})
-export class AppComponent {
-  appList = ['apple', 'orange', 'banana'];
-}
-```
-
-Notes :
-
-
-
 ## Signals - Zoneless
 
 - Enabling Zoneless in your application is still an experimental feature
@@ -512,6 +455,11 @@ export const appConfig: ApplicationConfig = {
 - Then you can safely uninstall Zone.js by running the command `npm uninstall zone.js`
 
 Notes :
+
+
+# Appendix (Customization)
+
+<!-- .slide: class="page-title" -->
 
 
 
@@ -690,6 +638,63 @@ describe('HighlightDirective', () => {
     hostElement = fixture.nativeElement.querySelector('[appHighlight]') as HTMLElement;
   });
 });
+```
+
+Notes :
+
+
+
+## Pipes - Custom 1/2
+
+- Can be generated using Angular CLI: `ng generate pipe <pipeName>`
+- Use the `@Pipe` decorator on a class
+- Class must implement the `PipeTransform` interface (i.e. the `transform` method)
+
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'joinArray' })
+export class JoinArrayPipe implements PipeTransform {
+  transform(value: (string | number)[], separator = ' '): string {
+    return value.join(separator);
+  }
+}
+```
+
+- Usage example:
+
+```html
+<p>List: {{ ['apple', 'orange', 'banana'] | joinArray : ' / ' }}</p>
+
+<!-- List: apple / orange / banana -->
+```
+
+Notes :
+In fact this pipe does not really work because it needs to be "impure" (this is explained later...).
+
+
+## Pipes - Custom 2/2
+
+  - JoinArrayPipe should be defined as `impure` because its input is an `Array` that may be mutated
+
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'joinArray', pure: false }) // <-- Should be impure!
+export class JoinArrayPipe implements PipeTransform {
+  transform(value: (string | number)[], separator = ' '): string {
+    return value.join(separator);
+  }
+}
+
+@Component({
+  selector: 'app-root',
+  template: `{{ appList | joinArray }}
+    <button (click)=" appList.push('kiwi') ">Mutate</button>`, // <-- Mutation
+})
+export class AppComponent {
+  appList = ['apple', 'orange', 'banana'];
+}
 ```
 
 Notes :
