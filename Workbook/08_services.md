@@ -1,6 +1,6 @@
 ## Lab 8: Services
 
-In this lab, you'll move the data ownership from the `AppComponent` to **services**.
+In this lab, you'll move the data ownership from the `App` to **services**.
 
 You need to create 2 services using Angular CLI:
 
@@ -12,7 +12,7 @@ You need to create 2 services using Angular CLI:
 
 The service should have:
 
-- A `_products = signal<Product[]>(...)` private property (move here the 4 products defined in `app.component.ts`)
+- A `_products = signal<Product[]>(...)` private property (move here the 4 products defined in `app.ts`)
 
 - A `products = _products.asReadonly()` public property
 
@@ -22,7 +22,7 @@ The service should have:
 
 #### Usage
 
-- `Appcomponent`: refactor the component to use the `CatalogService` service
+- `App`: refactor the component to use the `CatalogService` service
 
 <div class="pb"></div>
 
@@ -51,9 +51,9 @@ The service should have:
 
 ### Usage
 
-- `AppComponent`: refactor the component to use the  `BasketService` service
+- `App`: refactor the component to use the  `BasketService` service
 
-- `MenuComponent`: use the `BasketService` to display the number of items in the basket.<br />
+- `Menu`: use the `BasketService` to display the number of items in the basket.<br />
   To achieve this, add a `numberOfItems = computed<number>(...)` property to the menu component.
 
 ### Use of injection token
@@ -62,7 +62,7 @@ The service should have:
 
 - Provide the token using a `ValueProvider` with the value _"Bienvenue sur Zenika Ecommerce"_
 
-- Inject the token in the `AppComponent` to display the app title
+- Inject the token in the `App` to display the app title
 
 <div class="pb"></div>
 
@@ -70,10 +70,10 @@ The service should have:
 
 Since we've modified the application extensively, tests fail!
 
-- For now, let's disable the tests in `app.component.spec.ts` by adding an `x` before the main `describe()`:
+- For now, let's disable the tests in `app.spec.ts` by adding an `x` before the main `describe()`:
 
 ```ts
-xdescribe("AppComponent", () => { /* ... */ });
+xdescribe("App", () => { /* ... */ });
 ```
 
 #### `catalog.service.spec.ts`
@@ -88,7 +88,7 @@ xdescribe("AppComponent", () => { /* ... */ });
 
 - It should update the total when a product is added
 
-#### `menu.component.spec.ts`
+#### `menu.spec.ts`
 
 The component now depends on the newly created `BasketService`.
 Note that, as this service is "provided in root", it is automatically provided in `TestBed` and used in our tests.
@@ -116,7 +116,7 @@ export class BasketStubService implements Partial<BasketService> {
 }
 ```
 
-- Provide the stub in `menu.component.spec.ts`
+- Provide the stub in `menu.spec.ts`
 
 <div class="pb"></div>
 
@@ -124,11 +124,11 @@ Add test:
 
 - It should display the number of items
 
-#### `app.component.spec.ts`
+#### `app.spec.ts`
 
 Some tests currently performed in this component do not need to be fixed, but simply removed, as they are no longer relevant.
 
-- Remove the tests related to the computation of the **basket total** and **catalog stock update** (the `AppComponent` is no longer responsible for these computations):
+- Remove the tests related to the computation of the **basket total** and **catalog stock update** (the `App` is no longer responsible for these computations):
 
   - <del>It should update the total when a product emits the "addToBasket" event</del>
   - <del>It should update the total when "addToBasket" class method is called</del>
@@ -138,7 +138,7 @@ Some tests currently performed in this component do not need to be fixed, but si
 
 - Create a minimalist class `CatalogStubService` that will replace the `CatalogService` (such as you did above for the `BasketService`)
 
-- Provide the 2 stubs in `app.component.spec.ts`
+- Provide the 2 stubs in `app.spec.ts`
 
 - Provide a value for `APP_TITLE` injection token
 

@@ -419,8 +419,8 @@
     },
     {
       "type": "text",
-      "version": 2015,
-      "versionNonce": 1573699764,
+      "version": 2023,
+      "versionNonce": 467612353,
       "isDeleted": false,
       "id": "Ji_kyueQbaasXo-TwHp6z",
       "fillStyle": "hachure",
@@ -429,11 +429,11 @@
       "roughness": 1,
       "opacity": 100,
       "angle": 0,
-      "x": 1501.748448760486,
+      "x": 1519.0609525751834,
       "y": 223.5601860894838,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "#b2f2bb",
-      "width": 140.60000610351562,
+      "width": 105.9749984741211,
       "height": 48,
       "seed": 1916252997,
       "groupIds": [
@@ -442,16 +442,16 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1747142100626,
+      "updated": 1750841503515,
       "link": null,
       "locked": false,
       "fontSize": 20,
       "fontFamily": 3,
-      "text": "AppComponent\n(Default)",
+      "text": "App\n(Default)",
       "textAlign": "center",
       "verticalAlign": "middle",
       "containerId": "x7MF8NV5exdXluDhC-9Hx",
-      "originalText": "AppComponent\n(Default)",
+      "originalText": "App\n(Default)",
       "lineHeight": 1.2,
       "baseline": 43,
       "index": "aD",
@@ -1161,7 +1161,8 @@
       "startBinding": null,
       "endBinding": null,
       "startArrowhead": null,
-      "endArrowhead": null
+      "endArrowhead": null,
+      "polygon": false
     },
     {
       "type": "arrow",
@@ -1338,7 +1339,8 @@
     "gridSize": 20,
     "gridStep": 5,
     "gridModeEnabled": false,
-    "viewBackgroundColor": "fff00"
+    "viewBackgroundColor": "fff00",
+    "lockedMultiSelections": {}
   },
   "files": {}
 }

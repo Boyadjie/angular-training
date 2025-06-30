@@ -62,7 +62,7 @@ npm i bootstrap
 
 ### Adding the HTML code
 
-- Copy/paste the inner content of the tag `<body> <!-- ONLY WHAT'S INSIDE --> </body>` to `src/app/app.component.html`
+- Copy/paste the inner content of the tag `<body> <!-- ONLY WHAT'S INSIDE --> </body>` to `src/app/app.html`
 
 - Serve your app using `ng serve` to see if the result is equivalent to that of the designers
 

@@ -8,7 +8,7 @@
       "options": { "parser": "html" }
     },
     {
-      "files": "*.component.html",
+      "files": "*.html",
       "options": { "parser": "angular" }
     }
   ]

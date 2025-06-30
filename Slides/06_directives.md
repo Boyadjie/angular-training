@@ -94,7 +94,7 @@ import { NgClass } from '@angular/common';
     .highlight { background-color: yellow }
   `]
 })
-export class ToggleHighlightComponent {
+export class ToggleHighlight {
   isHighlighted = false;
 }
 ```

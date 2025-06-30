@@ -80,7 +80,7 @@ import { Component } from '@angular/core';
     <input ngModel />
   `,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 - Under the hood, the `ngModel` directive tracks the **value**, user **interaction**, and **validation status** of the control element (such as an `<input />`) to which it is attached
@@ -182,7 +182,7 @@ export class HelloDirective {}
   imports: [HelloDirective],
   template: '<div appHello #myDirective="helloExportedName" #myDiv></div>',
 })
-export class AppComponent {}
+export class App {}
 ```
 
 - Here, the template variable `myDirective` holds the `HelloDirective` instance
@@ -214,7 +214,7 @@ Let's take a closer look at the `NgModel` directive
     <p>The field is {{ model.valid ? 'valid' : 'invalid' }}.</p>
   `,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -242,7 +242,7 @@ Notes :
   `,
   styles: [`.ng-valid{ color: green; }   .ng-touched.ng-invalid{ color: red; }`],
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -270,7 +270,7 @@ Notes :
   `,
   styles: [`.is-valid { color: green; }   .is-invalid { color: red; }`],
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -296,7 +296,7 @@ Typically, the field is marked invalid only if both "touched" and "invalid".
     <input #inputRef [value]="data" (input)="data = inputRef.value" />
   `,
 })
-export class AppComponent { data = ''; }
+export class App { data = ''; }
 ```
 
 Notes :
@@ -346,7 +346,7 @@ Notes :
       <button type="submit" [disabled]="userForm.invalid">Submit</button>
     </form>`,
 })
-export class AppComponent {
+export class App {
   submitForm(userFormValue: { name: string; email: string; message: string }) { /* ... */ }
 }
 ```
@@ -471,7 +471,7 @@ import { StartWithDirective } from './starts-with.directive';
       }
     </form>`,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :

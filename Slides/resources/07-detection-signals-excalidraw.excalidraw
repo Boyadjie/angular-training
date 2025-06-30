@@ -279,8 +279,8 @@
     },
     {
       "type": "text",
-      "version": 2058,
-      "versionNonce": 577394082,
+      "version": 2061,
+      "versionNonce": 986352993,
       "isDeleted": false,
       "id": "Ji_kyueQbaasXo-TwHp6z",
       "fillStyle": "hachure",
@@ -289,11 +289,11 @@
       "roughness": 1,
       "opacity": 100,
       "angle": 0,
-      "x": 1501.398450286365,
+      "x": 1513.173451812244,
       "y": 223.5601860894838,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
-      "width": 141.3000030517578,
+      "width": 117.75,
       "height": 48,
       "seed": 1916252997,
       "groupIds": [
@@ -302,16 +302,16 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1747213889748,
+      "updated": 1750841564539,
       "link": null,
       "locked": false,
       "fontSize": 20,
       "fontFamily": 3,
-      "text": "AppComponent\n(Zoneless)",
+      "text": "App\n(Zoneless)",
       "textAlign": "center",
       "verticalAlign": "middle",
       "containerId": "x7MF8NV5exdXluDhC-9Hx",
-      "originalText": "AppComponent\n(Zoneless)",
+      "originalText": "App\n(Zoneless)",
       "lineHeight": 1.2,
       "baseline": 43,
       "index": "aD",
@@ -1021,7 +1021,8 @@
       "startBinding": null,
       "endBinding": null,
       "startArrowhead": null,
-      "endArrowhead": null
+      "endArrowhead": null,
+      "polygon": false
     },
     {
       "type": "arrow",
@@ -1198,7 +1199,8 @@
     "gridSize": 20,
     "gridStep": 5,
     "gridModeEnabled": false,
-    "viewBackgroundColor": "fff00"
+    "viewBackgroundColor": "fff00",
+    "lockedMultiSelections": {}
   },
   "files": {}
 }

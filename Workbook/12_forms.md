@@ -3,12 +3,12 @@
 In this lab, you'll create an Angular form to checkout the basket.
 
 - Generate a new component using Angular CLI:
-  - `src/app/basket/checkout-form/checkout-form.component.ts`
+  - `src/app/basket/checkout-form/checkout-form.ts`
 
 - Add the `FormsModule` to the component `imports` metadata
 
 - For the component template, copy/paste the design made with love by the UI/UX team:
-  - `Exercises/resources/checkout-form/checkout-form.component.html`
+  - `Exercises/resources/checkout-form/checkout-form.html`
 
 - Insert the component selector at the end of the basket component template:
   - `<app-checkout-form />`
@@ -84,7 +84,7 @@ export class BasketService {
 }
 ```
 
-### Back to `CheckoutFormComponent`
+### Back to `CheckoutForm` component
 
 You now have everything you need to implement the `checkout()` method you created earlier
 

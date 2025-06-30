@@ -46,7 +46,7 @@ export const appConfig: ApplicationConfig = {
   selector: 'app-root',
   template: '<h1>{{ msg.data }}</h1>',
 })
-export class AppComponent {
+export class App {
   private apiService = inject(ApiService);        // <-- 3. Injecting
   msg = this.apiService.fetchMsg();               // <-- 4. Consuming
 }
@@ -126,16 +126,16 @@ Notes :
 @Component ({
   selector: 'app-parent',
   providers: [ParentService],
-  imports: [ChildComponent],
+  imports: [Child],
   template: '<app-child />',
 })
-export class ParentComponent {
+export class Parent {
   parentService = inject(ParentService);
 }
 
 @Component ({ selector: 'app-child', template: '...' })
-export class ChildComponent {
-  parentService = inject(ParentService); // Get the service from the `ParentComponent` injector
+export class Child {
+  parentService = inject(ParentService); // Get the service from the `Parent` injector
 }
 ```
 
@@ -155,12 +155,12 @@ import { Component, Injectable, inject } from '@angular/core';
 export class DataService { data?: string; }
 
 @Component({ selector: 'app-setter', template: '...', })
-export class SetterComponent {
+export class Setter {
   constructor() { inject(DataService).data = 'Hello World!'; }
 }
 
 @Component({ selector: 'app-getter', template: '<h1>{{ data }}</h1>' })
-export class GetterComponent {
+export class Getter {
   private dataService = inject(DataService);
 
   get data() { return this.dataService.data; } // <-- 'Hello World!' 
@@ -173,10 +173,10 @@ Notes :
 
 ## Services - providedIn VS providers 1/3
 Use **cautiously** the `providers` metadata!
-Here's an example: we created a service (**MyService**) and two components: **ParentComponent** and **ChildComponent**
+Here's an example: we created a service (**MyService**) and two components: **Parent** and **Child**
 - **MyService** is `providedIn: 'root'`
-- **ParentComponent** has a dedicated provider for **MyService** (`providers: [MyService]`)
-- **ChildComponent** is a child of **ParentComponent**
+- **Parent** has a dedicated provider for **MyService** (`providers: [MyService]`)
+- **Child** is a child of **Parent**
 
 ```ts
 @Injectable({
@@ -186,9 +186,9 @@ export class MyService {}
 
 @Component ({
   providers: [MyService],
-  imports: [ChildComponent],
+  imports: [Child],
 })
-export class ParentComponent {
+export class Parent {
   myService = inject(MyService);
 }
 ```
@@ -212,9 +212,9 @@ Notes :
 ## Services - providedIn VS providers 3/3
 
 We will have 2 instances of MyService at runtime.
-- AppComponent uses the MyService's instance **defined in the root injector**
-- ParentComponent find MyService in its own injector: therefore **it uses another instance**
-- ChildComponent doesn't have MyService in its own injector. Angular will look for an instance that is further up in the component tree: therefore **it will use the ParentComponent's instance**
+- App uses the MyService's instance **defined in the root injector**
+- Parent find MyService in its own injector: therefore **it uses another instance**
+- Child doesn't have MyService in its own injector. Angular will look for an instance that is further up in the component tree: therefore **it will use the Parent's instance**
 <img src="./resources/08-injectors-part2-img.png" width="50%" style="display: block; margin: 1rem auto 1rem auto" />
 
 Notes :
@@ -289,7 +289,7 @@ export const appConfig: ApplicationConfig = {
 };
 
 @Component({ /* ... */ })
-export class AppComponent {
+export class App {
   appTitle = inject(APP_TITLE); // <-- 'My Awesome App'
 }
 ```
@@ -338,12 +338,12 @@ In the following example, we test a component in isolation, replacing the servic
 ```ts
 import { TestBed } from '@angular/core/testing';
 
-describe('AppComponent', () => {
+describe('App', () => {
   let apiService: ApiService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [App],
       providers: [{ provide: ApiService, useClass: ApiStubService }],
     }).compileComponents();
 

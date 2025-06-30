@@ -41,7 +41,7 @@ export const appConfig: ApplicationConfig = {
 
 The product price should now be displayed correctly.
 
-### `AppComponent`
+### `App`
 
 - Use the `currency` pipe to display the basket total
 

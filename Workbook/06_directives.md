@@ -8,7 +8,7 @@ In this lab, you'll use the `ngClass` directive to improve the application's log
 
 ### Tests
 
-#### `product.component.spec.ts`
+#### `product-card.spec.ts`
 
 - It should not add the "text-bg-warning" className when stock is greater than 1
 

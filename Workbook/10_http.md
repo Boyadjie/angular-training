@@ -58,7 +58,7 @@ export class CatalogService {
 }
 ```
 
-#### Updating the `AppComponent`
+#### Updating the `App` component
 
 - Subcribe to `CatalogService.fetchProducts()` method in the class constructor, to trigger data fetching
 
@@ -70,7 +70,7 @@ export class CatalogService {
 
 - Add a `addItem(productId: string): Observable<BasketItem>` method posts the item to be added and update the `_basket` property accordingly
 
-#### Updating the `AppComponent`
+#### Updating the `App` component
 
 - Subcribe to `BasketService.fetchBasket()` method in the class constructor, to trigger data fetching
 

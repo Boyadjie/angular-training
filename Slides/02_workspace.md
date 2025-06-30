@@ -200,7 +200,7 @@ Notes :
 
 - `index.html`: final **document** of the Single Page Application (SPA)
 - `main.ts`: **entry point** of the app (from which Vite builds the JavaScript bundle)
-- `app/app.component.*`: **main component** of the app (the one used to bootstrap the app)
+- `app/app.*`: **main component** of the app (the one used to bootstrap the app)
 - `styles.css`: **global styles** of the app
 - `public/*`: **resources** of the app (images, pdf, ...)
 

@@ -104,13 +104,13 @@ You should see the app with a placeholder content. 🚀
 
 Even if we haven't yet studied the main concepts, let's modify the application right away!
 
-- Replace the content of `src/app/app.component.html` with:
+- Replace the content of `src/app/app.html` with:
 
 ```html
 <h1>Welcome to {{ title }}!</h1>
 ```
 
-- Add some style in `src/app/app.component.css`:
+- Add some style in `src/app/app.css`:
 
 ```css
 h1 {
@@ -118,10 +118,10 @@ h1 {
 }
 ```
 
-- Replace the property `title` in `src/app/app.component.ts` with:
+- Replace the property `title` in `src/app/app.ts` with:
 
 ```ts
-class AppComponent {
+class App {
   title = 'my first component';
 }
 ```
@@ -140,7 +140,7 @@ or:
 npm test
 ```
 
-Because we've modified the application, the tests in `app.component.spec.ts` fail.
+Because we've modified the application, the tests in `app.spec.ts` fail.
 
 - Fix the test on property `title`
 - Fix the test on tag `h1`

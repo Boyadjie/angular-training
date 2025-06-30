@@ -31,7 +31,7 @@ describe('App (second approach - allowing unknown HTML elements)', () => {
   });
 
   it('should display the products', () => {
-    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product'));
+    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
     productDebugElements.forEach((productDebugElement, index) => {
       expect(productDebugElement.properties['product']).toBe(component.products[index]);
     });

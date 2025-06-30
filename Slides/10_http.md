@@ -95,7 +95,7 @@ import { HttpClient } from '@angular/common/http';
   template: `<pre>{{ todos | json }}</pre>`
   imports: [JsonPipe],
 })
-export class TodosComponent {
+export class Todos {
   private httpClient = inject(HttpClient);          // <-- 2. Inject service
 
   protected todos?: Todo[];
@@ -155,7 +155,7 @@ import { TodosService } from './todos.service.ts';
   template: `<pre>{{ todos() | json }}</pre>`,
   imports: [JsonPipe],
 })
-export class TodoComponent {
+export class Todo {
   private todosService = inject(TodosService);
 
   protected todos = signal<Todo[] | undefined>(undefined);
@@ -420,10 +420,10 @@ import { TodosService } from './todos.service.ts';
 
 @Component({
   selector: 'app-todos',
-  templateUrl: 'todos.component.html',
+  templateUrl: 'todos.html',
   imports: [JsonPipe],
 })
-export class TodosComponent {                               // <-- Data source consumer
+export class Todos {                               // <-- Data source consumer
   private todosService = inject(TodosService);
 
   todos = this.todosService.todos; // Data can be consumed here and in other components too...
@@ -447,7 +447,7 @@ Notes :
 - Allowing the component to react to every status of the request (**loading**, **error** and **fetched**) in its template
 
 ```html
-<!-- todos.component.html -->
+<!-- todos.html -->
 
 @if (todos() === undefined) {
 
