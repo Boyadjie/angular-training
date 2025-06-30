@@ -313,9 +313,9 @@ import { Component } from '@angular/core';
   selector: 'app-number-parity',
   template: `
     <app-counter [(count)]="count" />
-
     <span>{{ count % 2 ? 'is odd' : 'is even' }}</span>
   `,
+  imports : [Counter],
 })
 export class NumberParity {
   count = 0;

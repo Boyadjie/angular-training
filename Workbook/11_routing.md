@@ -98,7 +98,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 When visiting the page `http://localhost:4200/basket`:
 
 - If there are items in the basket, the `Basket` component should be displayed
-- It the basket is empty, an alternate `BasketEmpty` component should be displayed
+- It the basket is empty, an alternate `EmptyBasket` component should be displayed
 
 Let's do this!
 
@@ -117,7 +117,7 @@ export const basketGuard: CanMatchFn = () => {
 
 - Add the guard to the appropriate route
 
-- Generate a new component `BasketEmpty`
+- Generate a new component `EmptyBasket`
   - It simply displays _"Votre panier est vide."_
 
 - Add the route `'basket'` to display the component

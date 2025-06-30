@@ -4,7 +4,7 @@ In this lab, you will implement the tests for the app you developed in the "**La
 
 The `Menu` component doesn't need to be tested, since it have no logic.
 
-You're going to focus on the `ProductComponent` and the `App`.
+You're going to focus on the `Product` component and the `App`.
 
 - Before running the tests, replace the content of `app.spec.ts` with the following:
 

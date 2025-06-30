@@ -55,6 +55,9 @@ describe('App', () => {
 
   it('should display the products', () => {
     const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+
+    expect(productDebugElements).toHaveSize(2);
+
     productDebugElements.forEach((productDebugElement, index) => {
       expect(productDebugElement.properties['product']).toBe(component.products()[index]);
     });

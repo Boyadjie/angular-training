@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { BasketEmpty } from './basket-empty/basket-empty';
+import { EmptyBasket } from './empty-basket/empty-basket';
 import { Basket } from './basket/basket';
 import { basketGuard } from './basket/basket.guard';
 import { Catalog } from './catalog/catalog';
@@ -21,7 +21,7 @@ export const routes: Routes = [
   },
   {
     path: 'basket',
-    component: BasketEmpty,
+    component: EmptyBasket,
   },
   {
     path: '**',

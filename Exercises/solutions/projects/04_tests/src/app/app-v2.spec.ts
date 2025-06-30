@@ -32,6 +32,9 @@ describe('App (second approach - allowing unknown HTML elements)', () => {
 
   it('should display the products', () => {
     const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+
+    expect(productDebugElements).toHaveSize(4);
+
     productDebugElements.forEach((productDebugElement, index) => {
       expect(productDebugElement.properties['product']).toBe(component.products[index]);
     });

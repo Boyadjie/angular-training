@@ -2,7 +2,7 @@
 
 In this lab, you'll use the `ngClass` directive to improve the application's logic.
 
-### `ProductComponent`
+### `Product` component
 
 - Use `ngClass` directive the add the CSS class `.text-bg-warning` on the element `<div class="card h-100 text-center">` but only when the product `stock` is equal to 1 (last chance to buy it!).
 

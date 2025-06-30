@@ -2,7 +2,7 @@
 
 In this lab, you'll use pipes to format the application content.
 
-### `ProductComponent`
+### `Product` component
 
 Let's start by using pipes provided by the Angular framework:
 

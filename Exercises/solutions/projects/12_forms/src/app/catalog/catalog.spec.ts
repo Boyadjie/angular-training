@@ -6,9 +6,9 @@ import { of } from 'rxjs';
 import { APP_TITLE } from '../app.token';
 import { BasketService } from '../basket/basket.service';
 import { BasketStubService } from '../basket/basket.service.stub';
+import { Catalog } from './catalog';
 import { CatalogService } from './catalog.service';
 import { CatalogStubService } from './catalog.service.stub';
-import { Catalog } from './catalog';
 import { ProductCard } from './product/product-card';
 import { Product } from './product/product.types';
 
@@ -59,6 +59,9 @@ describe('Catalog', () => {
 
   it('should display the products', () => {
     const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+
+    expect(productDebugElements).toHaveSize(2);
+
     productDebugElements.forEach((productDebugElement, index) => {
       expect(productDebugElement.properties['product']).toBe(component.products()?.[index]);
     });

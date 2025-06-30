@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BasketEmpty } from './basket-empty';
+import { EmptyBasket } from './empty-basket';
 
-describe('BasketEmpty', () => {
-  let component: BasketEmpty;
-  let fixture: ComponentFixture<BasketEmpty>;
+describe('EmptyBasket', () => {
+  let component: EmptyBasket;
+  let fixture: ComponentFixture<EmptyBasket>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [BasketEmpty],
+      imports: [EmptyBasket],
     });
 
-    fixture = TestBed.createComponent(BasketEmpty);
+    fixture = TestBed.createComponent(EmptyBasket);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

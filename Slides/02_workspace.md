@@ -176,10 +176,9 @@ Notes :
       "architect": {
         "build": {
           "options": {
-             "outputPath": "dist/zenika-ng-website",
-              "index": "src/index.html",
+              "outputPath": "dist/zenika-ng-website",
+              // "index": "src/index.html",  // Becomes implicit in v20
               "browser": "src/main.ts",
-              "polyfills": ["zone.js"],
               "tsConfig": "tsconfig.app.json",
               "assets": [{ "glob": "**/*", "input": "public" }],
               "styles": ["src/styles.css"],
@@ -270,6 +269,32 @@ You can easily get help for each type of CLI command
 ng --help
 ng generate --help
 ng generate component --help
+```
+
+Notes :
+
+
+
+## Angular CLI - Naming convention
+
+In the previous versions (v19 and prior), the CLI added a suffix to the names of generated elements: ".component" for a component, ".service" for a service, etc.
+
+This is no longer the case in v20. However, if you want to enable suffix generation in your projects, use the following schematic configuration. Depending on the case, use either "type" or "typeSeparator":
+
+```json
+{
+  "projects": {
+    "app": {
+      ...
+      "schematics": {
+        "@schematics/angular:component": { "type": "my-component-suffix" },
+        "@schematics/angular:directive": { "type": "my-directive-suffix" },
+        "@schematics/angular:service": { "type": "my-service-suffix" },
+
+        "@schematics/angular:guard": { "typeSeparator": "my-guard-suffix" },
+        "@schematics/angular:pipe": { "typeSeparator": "my-pipe-suffix" },
+      },
+}
 ```
 
 Notes :

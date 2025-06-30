@@ -24,6 +24,9 @@ describe('App (first approach - with explicit dependency declaration)', () => {
 
   it('should display the products', () => {
     const productDebugElements = fixture.debugElement.queryAll(By.directive(ProductCard));
+
+    expect(productDebugElements).toHaveSize(4);
+
     productDebugElements.forEach((productDebugElement, index) => {
       const productComponent: ProductCard = productDebugElement.componentInstance;
       expect(productComponent.product()).toBe(component.products[index]);

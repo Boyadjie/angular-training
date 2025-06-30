@@ -306,7 +306,7 @@ Notes :
 
 - Major release every 6 months
 
-- Last major version `19` released in November 2024
+- Last major version `20` released in May 2025
 
 - Maintained by a dedicated team at **Google**
 
