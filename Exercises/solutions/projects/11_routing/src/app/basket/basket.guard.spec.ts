@@ -4,7 +4,7 @@ import { Observable, firstValueFrom, of } from 'rxjs';
 import { basketGuard } from './basket.guard';
 import { BasketService } from './basket.service';
 import { BasketStubService } from './basket.service.stub';
-import { BasketItem } from './basket.types';
+import { BasketItem } from './basket-item';
 
 describe('basketGuard', () => {
   const _executeGuard: CanMatchFn = (route, segments) =>

@@ -209,7 +209,7 @@ import { Component, model } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
-  template: '<button (click)="increment()">{{ count }}</button>'
+  template: '<button (click)="increment()">{{ count() }}</button>'
 })
 export class Counter {
   count = model(0);

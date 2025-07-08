@@ -10,7 +10,7 @@ import { Catalog } from './catalog';
 import { CatalogService } from './catalog.service';
 import { CatalogStubService } from './catalog.service.stub';
 import { ProductCard } from './product/product-card';
-import { Product } from './product/product.types';
+import { Product } from './product/product';
 
 describe('Catalog', () => {
   let fixture: ComponentFixture<Catalog>;

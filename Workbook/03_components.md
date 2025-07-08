@@ -12,9 +12,9 @@ In this lab, you'll start creating Angular components to break down the giant `A
 
 ### Creating the "product" component
 
-- Create a product component with the shell command `ng g c product` and move the corresponding code into it
+- Create a product component with the shell command `ng g c productCard` and move the corresponding code into it
 
-- Add a file `product.types.ts` in the same directory (`src/app/product/`) and define the product interface
+- Use the shell command `ng g i product` in the same directory (`src/app/product/`) and define the product interface:
 
 ```ts
 export interface Product {

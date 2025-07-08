@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { BasketService } from '../basket/basket.service';
 import { BasketStubService } from '../basket/basket.service.stub';
-import { BasketItem } from '../basket/basket.types';
+import { BasketItem } from '../basket/basket-item';
 import { Menu } from './menu';
 
 describe('Menu', () => {

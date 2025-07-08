@@ -5,7 +5,7 @@ import { APP_TITLE } from '../app.token';
 import { BasketService } from '../basket/basket.service';
 import { CatalogService } from './catalog.service';
 import { ProductCard } from './product/product-card';
-import { Product } from './product/product.types';
+import { Product } from './product/product';
 
 @Component({
   selector: 'app-catalog',

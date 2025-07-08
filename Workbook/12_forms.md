@@ -54,7 +54,7 @@ In this lab, you'll create an Angular form to checkout the basket.
 
 ### Basket related changes
 
-- In `src/app/basket/basket.types.ts`, add new interfaces:
+- In `src/app/basket/basket-item.ts`, add new interfaces:
 
 ```ts
 export interface CheckoutDetails {

@@ -1,7 +1,7 @@
 import { CurrencyPipe, NgClass, UpperCasePipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Product } from './product.types';
+import { Product } from './product';
 
 @Component({
   selector: 'app-product-card',

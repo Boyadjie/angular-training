@@ -50,7 +50,7 @@ import { Component } from '@angular/core';
   selector: 'app-hello',
   template: '<p>Hello world!</p>',
 })
-export class HelloComponent {}
+export class Hello {}
 ```
 
 Notes :
@@ -485,7 +485,7 @@ Notes :
 
 ## Component - Model input 4/4
 
-- Unlike `input`s which are "realony", `model`s are "writable"
+- Unlike `input`s which are "readonly", `model`s are "writable"
 
 ```ts
 export class Counter {

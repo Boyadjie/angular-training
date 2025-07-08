@@ -250,14 +250,11 @@ export const routes: Routes = [
 
 ```ts
 import { Component, inject, input, numberAttribute } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component ({
   template: 'Contact ID: {{ id }} (dynamic).'
 })
 export class Contact {
-  private activatedRoute = inject(ActivatedRoute);
-
   id = input.required<number>({ transform: numberAttribute });
 }
 ```

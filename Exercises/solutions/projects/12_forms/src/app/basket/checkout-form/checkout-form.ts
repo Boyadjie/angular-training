@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { BasketService } from '../basket.service';
-import { CheckoutDetails } from '../basket.types';
+import { CheckoutDetails } from '../basket-item';
 
 @Component({
   selector: 'app-checkout-form',

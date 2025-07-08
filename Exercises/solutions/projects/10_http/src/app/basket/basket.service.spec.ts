@@ -2,7 +2,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { BasketService } from './basket.service';
-import { BasketItem } from './basket.types';
+import { BasketItem } from './basket-item';
 
 describe('BasketService', () => {
   let service: BasketService;

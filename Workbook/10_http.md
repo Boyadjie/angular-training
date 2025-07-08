@@ -44,7 +44,7 @@ Here are the available endpoints:
 ```ts
 import { Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Product } from '../product/product.types';
+import { Product } from '../product/product';
 
 @Injectable({
   providedIn: 'root',

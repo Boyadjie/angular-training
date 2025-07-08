@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { BasketService } from './basket.service';
-import { BasketItem } from './basket.types';
+import { BasketItem } from './basket-item';
 
 @Injectable()
 export class BasketStubService implements Partial<BasketService> {

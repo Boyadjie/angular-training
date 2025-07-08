@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Menu } from './menu/menu';
 import { ProductCard } from './product-card/product-card';
-import { Product } from './product-card/product.types';
+import { Product } from './product-card/product';
 
 @Component({
   selector: 'app-root',

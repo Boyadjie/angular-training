@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Product } from '../product/product.types';
+import { Product } from '../product/product';
 
 @Injectable({
   providedIn: 'root',

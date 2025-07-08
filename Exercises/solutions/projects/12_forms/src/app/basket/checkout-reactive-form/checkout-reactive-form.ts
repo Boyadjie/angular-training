@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { BasketService } from '../basket.service';
-import { CheckoutDetails } from '../basket.types';
+import { CheckoutDetails } from '../basket-item';
 
 @Component({
   selector: 'app-checkout-reactive-form',

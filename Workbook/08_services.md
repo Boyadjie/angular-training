@@ -31,7 +31,7 @@ The service should have:
 - Define a new interface:
 
 ```ts
-// src/app/basket/basket.types.ts
+// src/app/basket/basket-item.ts
 export interface BasketItem {
   id: string;
   title: string;

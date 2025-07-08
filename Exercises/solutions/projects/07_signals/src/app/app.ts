@@ -1,7 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { Menu } from './menu/menu';
 import { ProductCard } from './product/product-card';
-import { Product } from './product/product.types';
+import { Product } from './product/product';
 
 @Component({
   selector: 'app-root',

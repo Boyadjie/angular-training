@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { BasketItem } from './basket.types';
+import { BasketItem } from './basket-item';
 
 @Injectable({
   providedIn: 'root',
