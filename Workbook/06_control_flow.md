@@ -1,4 +1,4 @@
-## Lab 5: Control flow
+## Lab 6: Control flow
 
 In this lab, you'll use the `@for`, `@if` and `@else` to improve the application's logic.
 
