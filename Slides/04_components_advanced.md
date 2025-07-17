@@ -1,4 +1,4 @@
-# XXXX
+# Communication between components
 
 <!-- .slide: class="page-title" -->
 
@@ -12,10 +12,9 @@
 - [Workspace](#/2)
 - [Technical prerequisites](#/3)
 - [Components](#/4)
-- **[XXXX](#/5)**
-- [Unit testing](#/5)
-- [Control flow](#/6)
-- [Directives](#/7)
+- **[Communication between components](#/5)**
+- [Unit testing](#/6)
+- [Control flow](#/7)
 - [Signals](#/8)
 - [Services](#/9)
 - [Pipes](#/10)
@@ -59,7 +58,6 @@ Notes :
 ## Component - Input 2/3
 
 - Use the `input.required()` function to declare a component class property as required input
-
 
 ```ts
 import { Component, input } from '@angular/core';

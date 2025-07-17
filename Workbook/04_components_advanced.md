@@ -1,8 +1,8 @@
-## Lab 4: XXXX
+## Lab 4: Communication between components
 
 In this lab, you'll start creating Angular components to break down the giant `App` component's template into smaller parts
 
-### Creating the "menu" component
+### Creating the "Menu" component
 
 - Create a menu component with the shell command `ng generate component menu` and move the corresponding code into it
 
@@ -54,7 +54,5 @@ Let's give the `App` class, data ownership.
 ```html
 <app-product-card [product]="products[0]" />
 ```
-
-- Define a `total = 0;` property that should be updated each time the user clicks on the button "Ajoutez au panier"
 
 <div class="pb"></div>
