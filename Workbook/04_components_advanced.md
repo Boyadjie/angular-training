@@ -1,4 +1,4 @@
-## Lab 4: Communication between components
+## Lab 4: Components (part 2)
 
 In this lab, you'll start creating Angular components to break down the giant `App` component's template into smaller parts
 

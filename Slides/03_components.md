@@ -1,4 +1,4 @@
-# Components
+# Components (part 1)
 
 <!-- .slide: class="page-title" -->
 
@@ -11,8 +11,8 @@
 - [Getting started](#/1)
 - [Workspace](#/2)
 - [Technical prerequisites](#/3)
-- **[Components](#/4)**
-- [Communication between components](#/5)
+- **[Components (part 1)](#/4)**
+- [Components (part 2)](#/5)
 - [Unit testing](#/6)
 - [Control flow](#/7)
 - [Signals](#/8)

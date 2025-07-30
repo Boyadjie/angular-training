@@ -1,4 +1,4 @@
-## Lab 3: Components
+## Lab 3: Components (part 1)
 
 In this lab, you're going to experiment the event binding and the property binding
 
