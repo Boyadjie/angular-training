@@ -2,11 +2,18 @@
 
 In this lab, you're going to experiment the event binding and the property binding
 
-### "App" component
+### Creating the "Menu" component
 
-- Define a `total = 0;` property.
-- Button "Ajoutez au panier" : Use the property binding (`(click)`) to trigger a function each time the button is clicked. The function should add the product's price to the total
-- "Header" tag : Use the class binding (`[class.]`) to add "bg-info" class when the total is greater than 0
+- Create a menu component with the shell command `ng generate component menu` and move the corresponding code into it
+
+- Once done, add the component `<app-menu />` to `src/app/app.html`
+
+- Define a property `isHovered` in the TS file. Set its default value to `false`.
+
+- Define a `(mouseenter)` (event binding) on the `nav` tag. When this event is triggered, it should set `isHovered` to `true`.
+
+- Define a `(mouseleave)` (event binding) on the `nav` tag. When this event is triggered, it should set `isHovered` to `false`.
+
+- Define a class binding (`[class.]`) to add the CSS class `bg-info` when the property `isHovered` is true.
 
 <div class="pb"></div>
-- [Communication between components](#/5)

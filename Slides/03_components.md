@@ -177,8 +177,6 @@ Notes :
 ```html
 <button [disabled]="isUnchanged">Save</button>  <!-- HTML property -->
 
-<app-hero-form [hero]="currentHero" />          <!-- property of a component -->
-
 <p [class.highlight]="isHighlight">Hello</p>    <!-- special case -->
 
 <button [style.color]="isHighlight? 'orange': 'black'">Save</button> <!-- special case -->
@@ -225,8 +223,6 @@ Notes :
 
 ```html
 <button (click)="handler()">Save</button>       <!-- HTML event -->
-
-<app-hero-form (deleted)="onHeroDeleted()" />   <!-- event of a component -->
 
 <input (keyup.enter)="onEnter()" />             <!-- special case: pseudo events -->
 ```

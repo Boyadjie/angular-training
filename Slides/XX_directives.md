@@ -32,9 +32,10 @@ Notes :
 - Live in the **component template**
 - Needs a **host element** to be attached to
 - Adds **additional behavior** to host elements in your template
-- Defined in a single place, it can be used in several components
-- Angular offers several **built-in directives** to manage forms, lists, styles, and what users see
-
+- XXX Defined in a single place, it can be used in several components
+- XXX Angular offers several **built-in directives** to manage forms, lists, styles, and what users see
+- +++ - **Component**: yes! components are in fact directives that embed their own template 
+- +++ - D'autres à venir : ngModel, routerLink...
 Notes :
 
 

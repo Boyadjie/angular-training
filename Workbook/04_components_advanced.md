@@ -2,12 +2,6 @@
 
 In this lab, you'll start creating Angular components to break down the giant `App` component's template into smaller parts
 
-### Creating the "Menu" component
-
-- Create a menu component with the shell command `ng generate component menu` and move the corresponding code into it
-
-- Once done, add the component `<app-menu />` to `src/app/app.html`
-
 <div class="pb"></div>
 
 ### Creating the "product" component
@@ -33,6 +27,8 @@ export interface Product {
 
 - Use the properties of the `product` object in the template to display the `title`, `description`, ...
 
+- Use the class binding ([`class.`]) to add the CSS class `text-bg-warning` on the element `<div class="card h-100 text-center">` but only when the product `stock` is equal to 1 (last chance to buy it!).
+
 ```html
 ... <a class="card-link">{{ product().title }}</a> ...
 ```
@@ -54,5 +50,7 @@ Let's give the `App` class, data ownership.
 ```html
 <app-product-card [product]="products[0]" />
 ```
+
+- Define a `total = 0`; property that should be updated each time the user clicks on the button "Ajoutez au panier"
 
 <div class="pb"></div>
