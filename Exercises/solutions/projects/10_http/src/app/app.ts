@@ -1,11 +1,11 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { APP_TITLE } from './app.token';
 import { BasketService } from './basket/basket.service';
 import { CatalogService } from './catalog/catalog.service';
 import { Menu } from './menu/menu';
-import { ProductCard } from './product/product-card';
 import { Product } from './product/product';
+import { ProductCard } from './product/product-card';
 
 @Component({
   selector: 'app-root',
@@ -25,9 +25,15 @@ export class App {
 
   total = this.basketService.total;
 
+  isHovered = false;
+
   constructor() {
     this.catalogService.fetchProducts().subscribe();
     this.basketService.fetchBasket().subscribe();
+  }
+
+  toggleIsHovered() {
+    this.isHovered = !this.isHovered;
   }
 
   addToBasket({ id }: Product) {
