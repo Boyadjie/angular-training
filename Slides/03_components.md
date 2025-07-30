@@ -1,4 +1,4 @@
-# Components (part 1)
+# Components (1)
 
 <!-- .slide: class="page-title" -->
 

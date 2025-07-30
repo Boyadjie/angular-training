@@ -2,8 +2,6 @@
 
 In this lab, you'll start creating Angular components to break down the giant `App` component's template into smaller parts
 
-<div class="pb"></div>
-
 ### Creating the "product" component
 
 - Create a product component with the shell command `ng g c productCard` and move the corresponding code into it

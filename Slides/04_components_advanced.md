@@ -1,4 +1,4 @@
-# Components (part 2)
+# Components (2)
 
 <!-- .slide: class="page-title" -->
 
@@ -280,8 +280,8 @@ Notes :
 - Live in the **component template**
 - Needs a **host element** to be attached to
 - Adds **additional behavior** to host elements in your template
-- **Component**: yes! components are in fact directives that embed their own template 
-- In the next chapters, we will see other directives ngModel, routerLink...
+- Components **are** in fact directives that embed their own template 
+- In the next chapters, we will see other directives: ngModel, routerLink...
 Notes :
 
 
