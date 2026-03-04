@@ -213,6 +213,7 @@ ng build
 When the build is complete, the application bundle is in the `dist/` directory
 
 Notes :
+before angular 18, it was asset and not public folder
 
 
 

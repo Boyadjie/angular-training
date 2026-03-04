@@ -464,7 +464,8 @@ Notes :
 ```
 
 Notes :
-
+Time to Explain the async pipe
+TODO add slide for the async pipe
 
 
 
