@@ -11,10 +11,10 @@
 - [Getting started](#/1)
 - [Workspace](#/2)
 - [Technical prerequisites](#/3)
-- [Components](#/4)
-- [Unit testing](#/5)
-- **[Control flow](#/6)**
-- [Directives](#/7)
+- [Components (part 1)](#/4)
+- [Components (part 2)](#/5)
+- [Unit testing](#/6)
+- **[Control flow](#/7)**
 - [Signals](#/8)
 - [Services](#/9)
 - [Pipes](#/10)
@@ -37,7 +37,7 @@ Notes :
   - `@for`
   - `@switch`
 
-😉 *Another control flow is `@defer` block, but its study goes beyond the scope of this training*
+😉 *Other control flows are `@defer` and `@let` blocks, but their study goes beyond the scope of this training*
 
 Notes :
 

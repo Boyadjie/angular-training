@@ -11,10 +11,10 @@
 - **[Getting started](#/1)**
 - [Workspace](#/2)
 - [Technical prerequisites](#/3)
-- [Components](#/4)
-- [Unit testing](#/5)
-- [Control flow](#/6)
-- [Directives](#/7)
+- [Components (part 1)](#/4)
+- [Components (part 2)](#/5)
+- [Unit testing](#/6)
+- [Control flow](#/7)
 - [Signals](#/8)
 - [Services](#/9)
 - [Pipes](#/10)
@@ -306,7 +306,7 @@ Notes :
 
 - Major release every 6 months
 
-- Last major version `20` released in May 2025
+- Last major version `21` released in November 2025
 
 - Maintained by a dedicated team at **Google**
 

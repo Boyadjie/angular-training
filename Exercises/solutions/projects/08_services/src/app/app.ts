@@ -3,8 +3,8 @@ import { APP_TITLE } from './app.token';
 import { BasketService } from './basket/basket.service';
 import { CatalogService } from './catalog/catalog.service';
 import { Menu } from './menu/menu';
-import { ProductCard } from './product/product-card';
 import { Product } from './product/product';
+import { ProductCard } from './product/product-card';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +23,12 @@ export class App {
   hasProductsInStock = this.catalogService.hasProductsInStock;
 
   total = this.basketService.total;
+
+  isHovered = false;
+
+  toggleIsHovered() {
+    this.isHovered = !this.isHovered;
+  }
 
   addToBasket({ id, title, price }: Product) {
     this.basketService.addItem({ id, title, price });

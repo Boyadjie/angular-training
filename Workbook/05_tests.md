@@ -1,4 +1,4 @@
-## Lab 4: Unit testing
+## Lab 5: Unit testing
 
 In this lab, you will implement the tests for the app you developed in the "**Lab 3: Components**".
 

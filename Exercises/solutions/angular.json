@@ -285,32 +285,32 @@
         }
       }
     },
-    "04_tests": {
+    "04_components_advanced": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/04_tests",
-      "sourceRoot": "projects/04_tests/src",
+      "root": "projects/04_components_advanced",
+      "sourceRoot": "projects/04_components_advanced/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/04_tests",
-            "index": "projects/04_tests/src/index.html",
-            "browser": "projects/04_tests/src/main.ts",
+            "outputPath": "dist/04_components_advanced",
+            "index": "projects/04_components_advanced/src/index.html",
+            "browser": "projects/04_components_advanced/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/04_tests/tsconfig.app.json",
+            "tsConfig": "projects/04_components_advanced/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/04_tests/public"
+                "input": "projects/04_components_advanced/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_tests/src/styles.css"],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_components_advanced/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -341,10 +341,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "04_tests:build:production"
+              "buildTarget": "04_components_advanced:build:production"
             },
             "development": {
-              "buildTarget": "04_tests:build:development"
+              "buildTarget": "04_components_advanced:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -352,59 +352,59 @@
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
           "options": {
-            "buildTarget": "04_tests:build"
+            "buildTarget": "04_components_advanced:build"
           }
         },
         "test": {
           "builder": "@angular/build:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/04_tests/tsconfig.spec.json",
+            "tsConfig": "projects/04_components_advanced/tsconfig.spec.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/04_tests/public"
+                "input": "projects/04_components_advanced/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_tests/src/styles.css"],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_components_advanced/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/04_tests/**/*.ts", "projects/04_tests/**/*.html"],
-            "eslintConfig": "projects/04_tests/eslint.config.js"
+            "lintFilePatterns": ["projects/04_components_advanced/**/*.ts", "projects/04_components_advanced/**/*.html"],
+            "eslintConfig": "projects/04_components_advanced/eslint.config.js"
           }
         }
       }
     },
-    "05_control_flow": {
+    "05_tests": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/05_control_flow",
-      "sourceRoot": "projects/05_control_flow/src",
+      "root": "projects/05_tests",
+      "sourceRoot": "projects/05_tests/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/05_control_flow",
-            "index": "projects/05_control_flow/src/index.html",
-            "browser": "projects/05_control_flow/src/main.ts",
+            "outputPath": "dist/05_tests",
+            "index": "projects/05_tests/src/index.html",
+            "browser": "projects/05_tests/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/05_control_flow/tsconfig.app.json",
+            "tsConfig": "projects/05_tests/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/05_control_flow/public"
+                "input": "projects/05_tests/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_control_flow/src/styles.css"],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_tests/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -435,10 +435,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "05_control_flow:build:production"
+              "buildTarget": "05_tests:build:production"
             },
             "development": {
-              "buildTarget": "05_control_flow:build:development"
+              "buildTarget": "05_tests:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -446,29 +446,123 @@
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
           "options": {
-            "buildTarget": "05_control_flow:build"
+            "buildTarget": "05_tests:build"
           }
         },
         "test": {
           "builder": "@angular/build:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/05_control_flow/tsconfig.spec.json",
+            "tsConfig": "projects/05_tests/tsconfig.spec.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/05_control_flow/public"
+                "input": "projects/05_tests/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_control_flow/src/styles.css"],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_tests/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/05_control_flow/**/*.ts", "projects/05_control_flow/**/*.html"],
-            "eslintConfig": "projects/05_control_flow/eslint.config.js"
+            "lintFilePatterns": ["projects/05_tests/**/*.ts", "projects/05_tests/**/*.html"],
+            "eslintConfig": "projects/05_tests/eslint.config.js"
+          }
+        }
+      }
+    },
+    "06_control_flow": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/06_control_flow",
+      "sourceRoot": "projects/06_control_flow/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "outputPath": "dist/06_control_flow",
+            "index": "projects/06_control_flow/src/index.html",
+            "browser": "projects/06_control_flow/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/06_control_flow/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/06_control_flow/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/06_control_flow/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "06_control_flow:build:production"
+            },
+            "development": {
+              "buildTarget": "06_control_flow:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n",
+          "options": {
+            "buildTarget": "06_control_flow:build"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/06_control_flow/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/06_control_flow/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/06_control_flow/src/styles.css"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/06_control_flow/**/*.ts", "projects/06_control_flow/**/*.html"],
+            "eslintConfig": "projects/06_control_flow/eslint.config.js"
           }
         }
       }

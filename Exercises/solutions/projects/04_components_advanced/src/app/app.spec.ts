@@ -1,20 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Menu } from './menu';
+import { App } from './app';
 
-describe('Menu', () => {
-  let component: Menu;
-  let fixture: ComponentFixture<Menu>;
+describe('App', () => {
+  let fixture: ComponentFixture<App>;
+  let component: App;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [Menu],
+      imports: [App],
     });
-    fixture = TestBed.createComponent(Menu);
+
+    fixture = TestBed.createComponent(App);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the app', () => {
     expect(component).toBeTruthy();
   });
 });

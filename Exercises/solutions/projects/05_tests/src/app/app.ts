@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Menu } from './menu/menu';
-import { ProductCard } from './product-card/product-card';
 import { Product } from './product-card/product';
+import { ProductCard } from './product-card/product-card';
 
 @Component({
   selector: 'app-root',
@@ -44,14 +44,15 @@ export class App {
     },
   ];
 
-  get hasProductsInStock(): boolean {
-    return this.products.some(({ stock }) => stock > 0);
-  }
-
   total = 0;
 
+  isHovered = false;
+
+  toggleIsHovered() {
+    this.isHovered = !this.isHovered;
+  }
+
   addToBasket(product: Product) {
-    product.stock -= 1;
     this.total += product.price;
   }
 }

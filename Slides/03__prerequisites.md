@@ -12,9 +12,9 @@
 - [Workspace](#/2)
 - **[Technical prerequisites](#/3)**
 - [Components](#/4)
-- [Unit testing](#/5)
-- [Control flow](#/6)
-- [Directives](#/7)
+- [Communication between components](#/5)
+- [Unit testing](#/6)
+- [Control flow](#/7)
 - [Signals](#/8)
 - [Services](#/9)
 - [Pipes](#/10)
