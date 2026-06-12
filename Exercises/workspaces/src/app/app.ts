@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class App {
   title = "my first component";
+  isHovered = false;
+  
+  toggleHover = () => {
+    this.isHovered = !this.isHovered;
+  }
 }
