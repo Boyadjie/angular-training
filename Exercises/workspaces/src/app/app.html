@@ -8,10 +8,15 @@
 
   <h2 class="h4">Catalogue</h2>
 
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-    <app-product-card class="col" [product]="products[0]" (addToBasket)="addToBasket($event)" />
-    <app-product-card class="col" [product]="products[1]" (addToBasket)="addToBasket($event)" />
-    <app-product-card class="col" [product]="products[2]" (addToBasket)="addToBasket($event)" />
-    <app-product-card class="col" [product]="products[3]" (addToBasket)="addToBasket($event)" />
-  </div>
+  @if (hasProductsInStock) {
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      @for (product of products; track product.id) {
+        @if (product.stock > 0) {
+          <app-product-card class="col" [product]="product" (addToBasket)="addToBasket($event)" />
+        }
+      }
+    </div>
+  } @else {
+    <p class="empty-stock">Désolé, notre stock est vide !</p>
+  }
 </main>

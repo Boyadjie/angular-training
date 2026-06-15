@@ -55,5 +55,10 @@ export class App {
 
   addToBasket = (product: Product) => {
     this.total += product.price;
+    product.stock--;
+  }
+
+  get hasProductsInStock(): boolean {
+    return this.products.some(product => product.stock > 0);
   }
 }
