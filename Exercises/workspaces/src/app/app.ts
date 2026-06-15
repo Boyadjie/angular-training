@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Product } from './product-card/product';
 import { ProductCard } from './product-card/product-card';
+import { Menu } from './menu/menu';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [ProductCard],
+  imports: [Menu, ProductCard],
 })
 export class App {
   title = 'my first component';
