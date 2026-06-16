@@ -53,12 +53,17 @@ export class App {
     this.isHovered = !this.isHovered;
   };
 
-  addToBasket = (product: Product) => {
-    this.total.update((total) => (total += product.price));
-    product.stock--;
+  addToBasket = ({ id, price }: Product) => {
+    this.total.update((total) => (total += price));
+    
+    this.products.update((products) =>
+      products.map((product) =>
+        id === product.id ? { ...product, stock: product.stock - 1 } : product,
+      ),
+    );
   };
 
-  get hasProductsInStock() {
-    return computed<boolean>(() => this.products().some((product) => product.stock > 0));
-  }
+  hasProductsInStock = computed<boolean>(() =>
+    this.products().some((product) => product.stock > 0),
+  );
 }
