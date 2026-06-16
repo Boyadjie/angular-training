@@ -27,24 +27,24 @@ describe('App', () => {
 
     productElements.forEach((productElement, index) => {
       const productComponent: ProductCard = productElement.componentInstance;
-      expect(productComponent.product()).toBe(component.products[index]);
+      expect(productComponent.product()).toBe(component.products()[index]);
     });
   });
 
   it('should update the total when "addToBasket" class method is called', () => {
     // Given
-    component.total = 99;
+    component.total.set(99);
 
     // When
-    component.addToBasket(component.products[1]);
+    component.addToBasket(component.products()[1]);
 
     // Then
-    expect(component.total).toBe(99 + component.products[1].price);
+    expect(component.total()).toBe(99 + component.products()[1].price);
   });
 
   it('should decrease the stock of the product added to the basket', () => {
     // Given
-    const product = component.products[0];
+    const product = component.products()[0];
     const initialStock = product.stock;
 
     // When
@@ -60,7 +60,10 @@ describe('App', () => {
     expect(productDebugElements.length).toBe(4);
 
     // When
-    component.products[0].stock = 0;
+    const updatedProducts = [...component.products()];
+    updatedProducts[0] = { ...updatedProducts[0], stock: 0 };
+    component.products.set(updatedProducts);
+
     fixture.detectChanges();
 
     // Then
@@ -69,20 +72,15 @@ describe('App', () => {
   });
 
   it('should display the message "Désolé, notre stock est vide !" when the stock is completely empty', () => {
-    // Given
     let element: HTMLElement | null = fixture.nativeElement.querySelector('.empty-stock');
     expect(element).toBeNull();
 
-    // When
-    component.products[0].stock = 0;
-    component.products[1].stock = 0;
-    component.products[2].stock = 0;
-    component.products[3].stock = 0;
+    const emptyProducts = component.products().map(product => ({ ...product, stock: 0 }));
+    component.products.set(emptyProducts);
+
     fixture.detectChanges();
 
-    // Then
     element = fixture.nativeElement.querySelector('.empty-stock');
-
     expect(element?.textContent).toContain('Désolé, notre stock est vide !');
   });
 });

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Product } from './product-card/product';
 import { ProductCard } from './product-card/product-card';
 import { Menu } from './menu/menu';
@@ -12,9 +12,9 @@ import { Menu } from './menu/menu';
 export class App {
   title = 'my first component';
   isHovered = false;
-  total = 0;
+  total = signal<number>(0);
 
-  products: Product[] = [
+  products = signal<Product[]>([
     {
       id: 'welsch',
       title: 'Coding the welsch',
@@ -47,18 +47,18 @@ export class App {
       price: 19,
       stock: 2,
     },
-  ];
+  ]);
 
   toggleHover = () => {
     this.isHovered = !this.isHovered;
   };
 
   addToBasket = (product: Product) => {
-    this.total += product.price;
+    this.total.update((total) => (total += product.price));
     product.stock--;
-  }
+  };
 
-  get hasProductsInStock(): boolean {
-    return this.products.some(product => product.stock > 0);
+  get hasProductsInStock() {
+    return computed<boolean>(() => this.products().some((product) => product.stock > 0));
   }
 }
