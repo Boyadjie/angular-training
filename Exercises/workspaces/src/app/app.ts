@@ -1,7 +1,8 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Product } from './product-card/product';
 import { ProductCard } from './product-card/product-card';
 import { Menu } from './menu/menu';
+import { Catalog } from './catalog/catalog';
 
 @Component({
   selector: 'app-root',
@@ -10,60 +11,21 @@ import { Menu } from './menu/menu';
   imports: [Menu, ProductCard],
 })
 export class App {
+  catalogService = inject(Catalog)
+
   title = 'my first component';
   isHovered = false;
   total = signal<number>(0);
 
-  products = signal<Product[]>([
-    {
-      id: 'welsch',
-      title: 'Coding the welsch',
-      description: 'Tee-shirt col rond - Homme',
-      photo: '/assets/coding-the-welsch.jpg',
-      price: 20,
-      stock: 2,
-    },
-    {
-      id: 'world',
-      title: 'Coding the world',
-      description: 'Tee-shirt col rond - Homme',
-      photo: '/assets/coding-the-world.jpg',
-      price: 18,
-      stock: 1,
-    },
-    {
-      id: 'vador',
-      title: 'Duck Vador',
-      description: 'Tee-shirt col rond - Femme',
-      photo: '/assets/coding-the-stars.jpg',
-      price: 21,
-      stock: 2,
-    },
-    {
-      id: 'snow',
-      title: 'Coding the snow',
-      description: 'Tee-shirt col rond - Femme',
-      photo: '/assets/coding-the-snow.jpg',
-      price: 19,
-      stock: 2,
-    },
-  ]);
+  products = this.catalogService.products
 
   toggleHover = () => {
     this.isHovered = !this.isHovered;
   };
 
-  addToBasket = ({ id, price }: Product) => {
-    this.total.update((total) => (total += price));
+  addToBasket = (product: Product) => {
+    this.total.update((total) => (total += product.price));
     
-    this.products.update((products) =>
-      products.map((product) =>
-        id === product.id ? { ...product, stock: product.stock - 1 } : product,
-      ),
-    );
+    this.catalogService.decreaseStock(product);
   };
-
-  hasProductsInStock = computed<boolean>(() =>
-    this.products().some((product) => product.stock > 0),
-  );
 }
