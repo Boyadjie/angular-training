@@ -3,6 +3,7 @@ import { Product } from './product-card/product';
 import { ProductCard } from './product-card/product-card';
 import { Menu } from './menu/menu';
 import { Catalog } from './catalog/catalog';
+import { Basket } from './basket/basket';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,12 @@ import { Catalog } from './catalog/catalog';
 })
 export class App {
   catalogService = inject(Catalog)
+  basketService = inject(Basket)
 
   title = 'my first component';
   isHovered = false;
-  total = signal<number>(0);
-
+  
+  total = this.basketService.total;
   products = this.catalogService.products
 
   toggleHover = () => {
@@ -24,8 +26,7 @@ export class App {
   };
 
   addToBasket = (product: Product) => {
-    this.total.update((total) => (total += product.price));
-    
+    this.basketService.addItem(product);
     this.catalogService.decreaseStock(product);
   };
 }
