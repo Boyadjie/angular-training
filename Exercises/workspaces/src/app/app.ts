@@ -4,6 +4,7 @@ import { ProductCard } from './product-card/product-card';
 import { Menu } from './menu/menu';
 import { Catalog } from './catalog/catalog';
 import { Basket } from './basket/basket';
+import {APP_TITLE} from './app.token';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class App {
   catalogService = inject(Catalog)
   basketService = inject(Basket)
 
-  title = 'my first component';
+  appTitle = inject(APP_TITLE);
+
   isHovered = false;
   
   total = this.basketService.total;
