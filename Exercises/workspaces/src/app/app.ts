@@ -21,6 +21,8 @@ export class App {
   total = this.basketService.total;
   products = this.catalogService.products
 
+  hasProductsInStock = this.catalogService.hasProductsInStock
+
   toggleHover = () => {
     this.isHovered = !this.isHovered;
   };
