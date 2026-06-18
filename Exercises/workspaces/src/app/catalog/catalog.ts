@@ -47,7 +47,7 @@ export class Catalog {
   decreaseStock = ({ id }: Product) => {
     this._products.update((products) =>
       products.map((product) =>
-        id === product.id ? { ...product, stock: product.stock - 1 } : product,
+        id === product.id && product.stock > 0 ? { ...product, stock: product.stock - 1 } : product,
       ),
     );
   };
