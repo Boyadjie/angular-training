@@ -1,17 +1,32 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { By } from '@angular/platform-browser';
-import { ProductCard } from './product-card/product-card';
+import { Basket } from './basket/basket';
+import { BasketStub } from './basket/basket.stub';
+import { Catalog } from './catalog/catalog';
+import { CatalogStub } from './catalog/catalog.stub';
+import { APP_TITLE } from './app.token';
+import { WritableSignal } from '@angular/core';
+import { Product } from './product-card/product';
 
 describe('App', () => {
   let component: App;
   let fixture: ComponentFixture<App>;
+  let basketService: Basket;
+  let catalogService: Catalog;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
+      providers: [
+        { provide: Basket, useClass: BasketStub },
+        { provide: Catalog, useClass: CatalogStub },
+        { provide: APP_TITLE, useValue: 'The App Title' }
+      ],
     }).compileComponents();
 
+    basketService = TestBed.inject(Basket);
+    catalogService = TestBed.inject(Catalog);
     fixture = TestBed.createComponent(App);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,66 +36,77 @@ describe('App', () => {
     expect(component).toBeTruthy();
   });
 
-  it('It should display the products', () => {
-    const productElements = fixture.debugElement.queryAll(By.directive(ProductCard));
-    expect(productElements.length).toBe(4);
+  it('should display the app title', () => {
+    const appTitle = (fixture.nativeElement.querySelector('h1') as HTMLElement).textContent;
+    expect(appTitle).toContain('The App Title');
+  });
 
-    productElements.forEach((productElement, index) => {
-      const productComponent: ProductCard = productElement.componentInstance;
-      expect(productComponent.product()).toBe(component.products()[index]);
+  it('should display the basket total', () => {
+    (basketService.total as WritableSignal<number>).set(99);    
+    fixture.detectChanges();
+
+    const header = (fixture.nativeElement as HTMLElement).querySelector('header');
+    expect(header?.textContent).toContain(99);
+  });
+
+  it('should display the products', () => {
+    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+
+    expect(productDebugElements.length).toBe(2);
+
+    productDebugElements.forEach((productDebugElement, index) => {
+      expect(productDebugElement.componentInstance.product()).toBe(component.products()[index]);
     });
   });
 
-  it('should update the total when "addToBasket" class method is called', () => {
-    // Given
-    component.total.set(99);
+  it('should call "CatalogService.decreaseStock" and "BasketService.addItem" methods when a product is added to the basket', () => {
+    const decreaseStockSpy = vi.spyOn(catalogService, 'decreaseStock');
+    const addItemSpy = vi.spyOn(basketService, 'addItem');
 
-    // When
-    component.addToBasket(component.products()[1]);
+    const productDebugElement = fixture.debugElement.query(By.css('app-product-card'));
+    productDebugElement.triggerEventHandler('addToBasket', component.products()[0]);
 
     // Then
-    expect(component.total()).toBe(99 + component.products()[1].price);
-  });
-
-  it('should decrease the stock of the product added to the basket', () => {
-    // Given
     const product = component.products()[0];
-    const initialStock = product.stock;
-
-    // When
-    component.addToBasket(product);
-
-    // Then
-    expect(product.stock).toBe(initialStock - 1);
+    expect(decreaseStockSpy).toHaveBeenCalledWith(product);
+    expect(addItemSpy).toHaveBeenCalledWith(product);
   });
 
-  it('should not display products whose stock is empty', () => {
+  it('should not display products with empty stock', () => {
     // Given
-    let productDebugElements = fixture.debugElement.queryAll(By.directive(ProductCard));
-    expect(productDebugElements.length).toBe(4);
+    expect(component.products().length).toBe(3);
+
+    // When/Then
+    let productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+    expect(productDebugElements.length).toBe(2); // Note: the third product stock equals 0
 
     // When
-    const updatedProducts = [...component.products()];
-    updatedProducts[0] = { ...updatedProducts[0], stock: 0 };
-    component.products.set(updatedProducts);
-
+    (catalogService.products as WritableSignal<Product[]>).update(products => {
+      products[0].stock = 0;
+      return [...products]; // Returns a new array reference to trigger reactivity
+    });
     fixture.detectChanges();
 
     // Then
-    productDebugElements = fixture.debugElement.queryAll(By.directive(ProductCard));
-    expect(productDebugElements.length).toBe(3);
+    productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+    expect(productDebugElements.length).toBe(1);
+    expect(productDebugElements[0].componentInstance.product()).toBe(component.products()[1]);
   });
 
   it('should display the message "Désolé, notre stock est vide !" when the stock is completely empty', () => {
+    // Given
     let element: HTMLElement | null = fixture.nativeElement.querySelector('.empty-stock');
     expect(element).toBeNull();
 
-    const emptyProducts = component.products().map(product => ({ ...product, stock: 0 }));
-    component.products.set(emptyProducts);
+    // When
+    (catalogService.hasProductsInStock as WritableSignal<boolean>).set(false);
 
+    
     fixture.detectChanges();
 
+    // Then
     element = fixture.nativeElement.querySelector('.empty-stock');
+
     expect(element?.textContent).toContain('Désolé, notre stock est vide !');
   });
 });
