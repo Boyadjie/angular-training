@@ -10,6 +10,7 @@ import { routes } from './app.routes';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { provideHttpClient } from '@angular/common/http';
 
 registerLocaleData(localeFr);
 
@@ -19,5 +20,6 @@ export const appConfig: ApplicationConfig = {
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
+    provideHttpClient(),
   ],
 };

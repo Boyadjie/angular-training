@@ -30,8 +30,8 @@ describe('Menu', () => {
     let numberOfItems = (fixture.nativeElement as HTMLElement).querySelector('.badge')?.textContent;
     expect(numberOfItems).toContain(0);
 
-    basketService.addItem({} as BasketItem)
-    basketService.addItem({} as BasketItem)
+    basketService.addItem("test")
+    basketService.addItem("test")
     fixture.detectChanges();
 
     numberOfItems = (fixture.nativeElement as HTMLElement).querySelector('.badge')?.textContent;

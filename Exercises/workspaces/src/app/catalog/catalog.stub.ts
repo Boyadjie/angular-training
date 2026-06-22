@@ -1,6 +1,7 @@
 import { Service, signal } from '@angular/core';
 import { Product } from '../product-card/product';
 import { Catalog } from './catalog';
+import { Observable, of } from 'rxjs';
 
 @Service()
 export class CatalogStub implements Partial<Catalog> {
@@ -12,7 +13,11 @@ export class CatalogStub implements Partial<Catalog> {
 
   hasProductsInStock = signal(true);
 
-  decreaseStock({id}: Product) {
+  fetchProducts(): Observable<Product[]> {
+    return of(this.products());
+  }
+
+  decreaseStock(id: string) {
     console.log(id);
   }
 }

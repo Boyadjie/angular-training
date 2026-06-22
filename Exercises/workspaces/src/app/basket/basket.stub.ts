@@ -1,6 +1,7 @@
 import { Service, signal } from '@angular/core';
 import { BasketItem } from './basket-item';
 import { Basket } from './basket';
+import { Observable, of } from 'rxjs';
 
 @Service()
 export class BasketStub implements Partial<Basket> {
@@ -8,7 +9,7 @@ export class BasketStub implements Partial<Basket> {
 
   total = signal(0);
 
-  addItem = (newItem: BasketItem): void => {
-    this.items.update((items) => [...items, newItem]);
+  addItem = (productId: string): Observable<BasketItem> => {
+    return of({ id: productId, title: '', price: 0 })
   }
 }

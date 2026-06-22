@@ -2,9 +2,12 @@ import { TestBed } from '@angular/core/testing';
 
 import { Basket } from './basket';
 import { BasketItem } from './basket-item';
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('Basket', () => {
   let service: Basket;
+  let httpTestingController: HttpTestingController;
   const mockItem: BasketItem = {
     id: 'mock',
     title: 'mocked basket item',
@@ -12,33 +15,111 @@ describe('Basket', () => {
   };
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient(), provideHttpClientTesting()],
+    });
     service = TestBed.inject(Basket);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should update the items when a product is added', () => {
-    // given
-    expect(service.items().length).toBe(0);
+  describe('fetchBasket', () => {
+    it('should trigger an http call to get the basket items', () => {
+      service.fetchBasket().subscribe();
 
-    // when
-    service.addItem(mockItem);
+      const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+      expect(req.request.method).toBe('GET');
+    });
 
-    // then
-    expect(service.items().length).toBe(1);
-    expect(service.items()).toContain(mockItem);
+    it('should expose an observable with the basket items', () => {
+      const responseItems: BasketItem[] = [
+        { id: 't-shirt', title: 't-shirt', price: 10 },
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20 },
+      ];
+
+      service.fetchBasket().subscribe((items) => {
+        expect(items).toBe(responseItems);
+      });
+
+      const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+      req.flush(responseItems);
+    });
+
+    it('should update items with the received basket items when the http call succeed', () => {
+      expect(service.items()).toEqual([]);
+
+      const responseItems: BasketItem[] = [
+        { id: 't-shirt', title: 't-shirt', price: 10 },
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20 },
+      ];
+
+      service.fetchBasket().subscribe(() => {
+        expect(service.items()).toBe(responseItems);
+      });
+
+      const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+      req.flush(responseItems);
+    });
+
+    it('should update total when the http call succeed', () => {
+      expect(service.items()).toEqual([]);
+
+      const responseItems: BasketItem[] = [
+        { id: 't-shirt', title: 't-shirt', price: 10 },
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20 },
+      ];
+
+      service.fetchBasket().subscribe(() => {
+        expect(service.total()).toBe(30);
+      });
+
+      const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+      req.flush(responseItems);
+    });
   });
 
-  it('should update the total when an item is added', () => {
-    expect(service.total()).toBe(0);
+  describe('addItem', () => {
+    it('should trigger an http call to add the received item to the basket', () => {
+      service.addItem('t-shirt').subscribe();
 
-    service.addItem(mockItem);
-    expect(service.total()).toBe(42);
+      const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+      expect(req.request.method).toBe('POST');
+    });
 
-    service.addItem(mockItem);
-    expect(service.total()).toBe(84);
-  })
+    it('should expose an observable with the added product', () => {
+      const responseItem = {
+        id: 't-shirt',
+        title: 't-shirt',
+        price: 20,
+      };
+
+      service.addItem('t-shirt').subscribe((item) => {
+        expect(item).toEqual(responseItem);
+      });
+
+      const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+      req.flush(responseItem);
+    });
+
+    it('should add the item to the items tracking property and update the total when the http call succeed', () => {
+      expect(service.items()).toEqual([]);
+
+      const responseItem = {
+        id: 't-shirt',
+        title: 't-shirt',
+        price: 20,
+      };
+
+      service.addItem('t-shirt').subscribe(() => {
+        expect(service.items()).toEqual([responseItem]);
+        expect(service.total()).toBe(20);
+      });
+
+      const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+      req.flush(responseItem);
+    });
+  });
 });

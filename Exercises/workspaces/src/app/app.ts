@@ -26,12 +26,16 @@ export class App {
 
   hasProductsInStock = this.catalogService.hasProductsInStock;
 
+  constructor() {
+    this.catalogService.fetchProducts().subscribe();
+    this.basketService.fetchBasket().subscribe();
+  }
+
   toggleHover = () => {
     this.isHovered = !this.isHovered;
   };
 
-  addToBasket = (product: Product) => {
-    this.basketService.addItem(product);
-    this.catalogService.decreaseStock(product);
+  addToBasket = (productId: string) => {
+    this.basketService.addItem(productId).subscribe(() => this.catalogService.decreaseStock(productId));
   };
 }
