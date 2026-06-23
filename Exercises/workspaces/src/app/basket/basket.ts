@@ -13,9 +13,4 @@ export class Basket {
   basketItems = this.basketService.items;
   total = this.basketService.total;
   numberOfItems = computed<number>(() => this.basketService.items().length)
-
-
-  constructor() {
-    this.basketService.fetchBasket().subscribe();
-  }
 }
