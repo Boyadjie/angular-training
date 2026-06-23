@@ -8,5 +8,10 @@ export const routes: Routes = [
   { path: 'catalog', component: Catalog, title: 'catalog' },
   { path: 'basket', component: Basket, title: 'basket', canMatch: [basketGuard] },
   { path: 'basket', component: EmptyBasket, title: 'basket-fallback' },
+  {
+    path: 'product/:id',
+    title: 'product-details',
+    loadComponent: () => import('./product-details/product-details')
+  },
   { path: '**', redirectTo: 'catalog'}
 ];
