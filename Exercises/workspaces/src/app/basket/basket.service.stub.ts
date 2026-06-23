@@ -1,10 +1,10 @@
 import { Service, signal } from '@angular/core';
 import { BasketItem } from './basket-item';
-import { Basket } from './basket';
+import { BasketService } from './basket.service';
 import { Observable, of } from 'rxjs';
 
 @Service()
-export class BasketStub implements Partial<Basket> {
+export class BasketServiceStub implements Partial<BasketService> {
   items = signal<BasketItem[]>([]);
 
   total = signal(0);

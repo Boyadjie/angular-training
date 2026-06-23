@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Menu } from './menu';
-import { Basket } from '../basket/basket';
-import {BasketStub} from '../basket/basket.stub'
+import { BasketService } from '../basket/basket.service';
+import {BasketServiceStub} from '../basket/basket.service.stub'
 import { BasketItem } from '../basket/basket-item';
 
 describe('Menu', () => {
   let component: Menu;
   let fixture: ComponentFixture<Menu>;
-  let basketService: Basket;
+  let basketService: BasketService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Menu],
-      providers: [{provide: Basket, useClass: BasketStub}]
+      providers: [{provide: BasketService, useClass: BasketServiceStub}]
     }).compileComponents();
 
-    basketService = TestBed.inject(Basket);
+    basketService = TestBed.inject(BasketService);
     fixture = TestBed.createComponent(Menu);
     component = fixture.componentInstance;
     await fixture.whenStable();

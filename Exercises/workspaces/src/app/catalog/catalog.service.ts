@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 @Service()
-export class Catalog {
+export class CatalogService {
   private httpClient = inject(HttpClient);
   private _products = signal<Product[]>([])
   products = this._products.asReadonly();

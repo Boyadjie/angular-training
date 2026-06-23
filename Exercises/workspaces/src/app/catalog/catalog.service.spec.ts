@@ -1,19 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Catalog } from './catalog';
+import { CatalogService } from './catalog.service';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { Product } from '../product-card/product';
 
 describe('Catalog', () => {
-  let service: Catalog;
+  let service: CatalogService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provideHttpClient(), provideHttpClientTesting()],
     });
-    service = TestBed.inject(Catalog);
+    service = TestBed.inject(CatalogService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 

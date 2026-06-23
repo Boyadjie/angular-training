@@ -1,9 +1,7 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { Product } from './product-card/product';
-import { ProductCard } from './product-card/product-card';
+import { Component, inject } from '@angular/core';import { ProductCard } from './product-card/product-card';
 import { Menu } from './menu/menu';
-import { Catalog } from './catalog/catalog';
-import { Basket } from './basket/basket';
+import { CatalogService } from './catalog/catalog.service';
+import { BasketService } from './basket/basket.service';
 import { APP_TITLE } from './app.token';
 import { CurrencyPipe } from '@angular/common';
 
@@ -14,8 +12,8 @@ import { CurrencyPipe } from '@angular/common';
   imports: [Menu, ProductCard, CurrencyPipe],
 })
 export class App {
-  catalogService = inject(Catalog);
-  basketService = inject(Basket);
+  catalogService = inject(CatalogService);
+  basketService = inject(BasketService);
 
   appTitle = inject(APP_TITLE);
 

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 @Service()
-export class Basket {
+export class BasketService {
   private httpClient = inject(HttpClient);
   private _items = signal<BasketItem[]>([]);
   items = this._items.asReadonly();

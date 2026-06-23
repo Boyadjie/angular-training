@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { By } from '@angular/platform-browser';
-import { Basket } from './basket/basket';
-import { BasketStub } from './basket/basket.stub';
-import { Catalog } from './catalog/catalog';
-import { CatalogStub } from './catalog/catalog.stub';
+import { BasketService } from './basket/basket.service';
+import { BasketServiceStub } from './basket/basket.service.stub';
+import { CatalogService } from './catalog/catalog.service';
+import { CatalogServiceStub } from './catalog/catalog.service.stub';
 import { APP_TITLE } from './app.token';
 import { WritableSignal } from '@angular/core';
 import { Product } from './product-card/product';
@@ -12,21 +12,21 @@ import { Product } from './product-card/product';
 describe('App', () => {
   let component: App;
   let fixture: ComponentFixture<App>;
-  let basketService: Basket;
-  let catalogService: Catalog;
+  let basketService: BasketService;
+  let catalogService: CatalogService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
       providers: [
-        { provide: Basket, useClass: BasketStub },
-        { provide: Catalog, useClass: CatalogStub },
+        { provide: BasketService, useClass: BasketServiceStub },
+        { provide: CatalogService, useClass: CatalogServiceStub },
         { provide: APP_TITLE, useValue: 'The App Title' }
       ],
     }).compileComponents();
 
-    basketService = TestBed.inject(Basket);
-    catalogService = TestBed.inject(Catalog);
+    basketService = TestBed.inject(BasketService);
+    catalogService = TestBed.inject(CatalogService);
     fixture = TestBed.createComponent(App);
     component = fixture.componentInstance;
     fixture.detectChanges();

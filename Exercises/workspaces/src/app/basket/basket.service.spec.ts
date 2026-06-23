@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Basket } from './basket';
+import { BasketService } from './basket.service';
 import { BasketItem } from './basket-item';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('Basket', () => {
-  let service: Basket;
+  let service: BasketService;
   let httpTestingController: HttpTestingController;
   const mockItem: BasketItem = {
     id: 'mock',
@@ -18,7 +18,7 @@ describe('Basket', () => {
     TestBed.configureTestingModule({
       providers: [provideHttpClient(), provideHttpClientTesting()],
     });
-    service = TestBed.inject(Basket);
+    service = TestBed.inject(BasketService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
