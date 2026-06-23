@@ -1,0 +1,17 @@
+<h2 class="h4">Mon panier</h2>
+
+<div class="card">
+  <div class="card-header">{{ numberOfItems() }} articles</div>
+
+  <ul class="list-group list-group-flush">
+    @for (item of basketItems(); track item.id) {
+      <li class="list-group-item d-flex justify-content-between">
+        {{ item.title }} <span class="text-primary">{{ item.price | currency}}</span>
+      </li>
+    }
+
+    <li class="list-group-item d-flex justify-content-between fw-bold">
+      Total <span class="text-primary">{{ total() | currency }}</span>
+    </li>
+  </ul>
+</div>

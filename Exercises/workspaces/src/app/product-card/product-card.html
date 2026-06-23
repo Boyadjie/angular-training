@@ -7,7 +7,7 @@
 
   <div class="card-body">
     <h3 class="h6 card-title">
-      <a class="card-link">{{ product().title | uppercase }}</a>
+      <a class="card-link" [routerLink]="['/product', product().id]">{{ product().title | uppercase }}</a>
     </h3>
     <p class="card-text">{{ product().price | currency }}</p>
 
