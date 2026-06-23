@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../product-card/product';
+import { Product } from '../catalog/product/product';
 import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 
 @Component({

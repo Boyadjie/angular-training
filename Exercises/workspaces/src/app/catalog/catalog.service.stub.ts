@@ -1,5 +1,5 @@
 import { Service, signal } from '@angular/core';
-import { Product } from '../product-card/product';
+import { Product } from './product/product';
 import { CatalogService } from './catalog.service';
 import { Observable, of } from 'rxjs';
 

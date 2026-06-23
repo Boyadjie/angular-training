@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { ProductCard } from '../product-card/product-card';
+import { ProductCard } from './product/product-card';
 import { CatalogService } from './catalog.service';
 import { BasketService } from '../basket/basket.service';
 import { APP_TITLE } from '../app.token';

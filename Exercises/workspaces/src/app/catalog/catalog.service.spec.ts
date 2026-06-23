@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { CatalogService } from './catalog.service';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
-import { Product } from '../product-card/product';
+import { Product } from './product/product';
 
 describe('Catalog', () => {
   let service: CatalogService;

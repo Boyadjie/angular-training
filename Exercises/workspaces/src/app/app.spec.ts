@@ -7,7 +7,7 @@ import { CatalogService } from './catalog/catalog.service';
 import { CatalogServiceStub } from './catalog/catalog.service.stub';
 import { APP_TITLE } from './app.token';
 import { WritableSignal } from '@angular/core';
-import { Product } from './product-card/product';
+import { Product } from './catalog/product/product';
 
 describe('App', () => {
   let component: App;

@@ -1,18 +1,18 @@
 import { computed, inject, Service, signal } from '@angular/core';
-import { Product } from '../product-card/product';
+import { Product } from './product/product';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 @Service()
 export class CatalogService {
   private httpClient = inject(HttpClient);
-  private _products = signal<Product[]>([])
+  private _products = signal<Product[] | undefined>(undefined);
   products = this._products.asReadonly();
-  
-  hasProductsInStock = computed<boolean>(() =>
-    this.products().some((product) => product.stock > 0),
+
+  hasProductsInStock = computed<boolean>(
+    () => this.products()?.some((product) => product.stock > 0) ?? false,
   );
-  
+
   fetchProducts(): Observable<Product[]> {
     return this.httpClient
       .get<Product[]>('http://localhost:8080/api/products')
@@ -21,7 +21,7 @@ export class CatalogService {
 
   decreaseStock = (id: string) => {
     this._products.update((products) =>
-      products.map((product) =>
+      (products ?? []).map((product) =>
         id === product.id && product.stock > 0 ? { ...product, stock: product.stock - 1 } : product,
       ),
     );
