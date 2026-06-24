@@ -1,0 +1,84 @@
+<div class="card mt-3">
+  <div class="card-header">Paiement</div>
+
+  <div class="card-body">
+    <form #checkoutForm="ngForm" (ngSubmit)="checkout(checkoutForm.value)">
+      <div class="mb-2">
+        <label class="form-label" for="field-name">Nom</label>
+        <input
+          ngModel
+          #nameModel="ngModel"
+          id="field-name"
+          name="name"
+          class="form-control"
+          [class.is-invalid]="touchedInvalid(nameModel)"
+          [class.is-valid]="nameModel.valid"
+          required
+          [disabled]="checkoutInProgress()"
+        />
+        @if (nameModel.hasError('required')) {
+          <span class="invalid-feedback">Champ obligatoire</span>
+        }
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label" for="field-address">Adresse</label>
+        <textarea
+          ngModel
+          #addressModel="ngModel"
+          id="field-address"
+          name="address"
+          class="form-control"
+          [class.is-invalid]="touchedInvalid(addressModel)"
+          [class.is-valid]="addressModel.valid"
+          required
+          [disabled]="checkoutInProgress()"
+        ></textarea>
+        @if (addressModel.hasError('required')) {
+          <span class="invalid-feedback">Champ obligatoire</span>
+        }
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label" for="field-creditCard">Carte de crédit</label>
+        <input
+          ngModel
+          #creditCardModel="ngModel"
+          id="field-creditCard"
+          name="creditCard"
+          class="form-control"
+          [class.is-invalid]="touchedInvalid(creditCardModel)"
+          [class.is-valid]="creditCardModel.valid"
+          pattern="^[0-9]{3}-[0-9]{3}$"
+          required
+          [disabled]="checkoutInProgress()"
+        />
+        @if (creditCardModel.hasError('required')) {
+          <span class="invalid-feedback">Champ obligatoire</span>
+        } @else if (creditCardModel.hasError('pattern')) {
+          <span class="invalid-feedback">Numéro invalide (exemple : 123-456)</span>
+        }
+      </div>
+
+      <div class="mt-3">
+        <button type="submit" class="btn btn-success" [disabled]="checkoutInProgress() || checkoutForm.invalid">Valider</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+@if(checkoutErrors()) {
+  <div class="mt-3 alert alert-danger alert-dismissible" role="alert">
+    Désolé, une erreur s'est produite.
+    <button type="button" class="btn-close" aria-label="Close" (click)="checkoutErrors.set(false)"></button>
+  </div>
+}
+
+@if(orderNumber()) {
+  <div class="mt-3 alert alert-success" role="alert">
+    <h4 class="alert-heading">Confirmation de la commande 🎉</h4>
+    n° de transaction: <strong>{{ orderNumber() }}</strong>
+    <hr />
+    <a class="alert-link" routerLink="/">Retourner à l'accueil</a>
+  </div>
+}

@@ -1,5 +1,5 @@
 import { computed, inject, Service, signal } from '@angular/core';
-import { BasketItem } from './basket-item';
+import { BasketItem, CheckoutDetails, CheckoutOrder } from './basket-item';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
@@ -22,4 +22,13 @@ export class BasketService {
       .post<BasketItem>('http://localhost:8080/api/basket', { productId })
       .pipe(tap((item) => this._items.update((items) => [...items, item])));
   };
+
+  checkout(checkoutDetails: CheckoutDetails): Observable<CheckoutOrder> {
+    return this.httpClient
+      .post<CheckoutOrder>(
+        'http://localhost:8080/api/basket/checkout',
+        checkoutDetails
+      )
+      .pipe(tap(() => this._items.set([])));
+  }
 }
